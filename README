@@ -7,3 +7,13 @@ to promote an event that is happening around Jakarta
 
 Contributor List:
 1. Steven 'Only' - Co-Founder
+
+
+
+Dependency List:
+1. Smarty Template Engine
+2. PEAR MDB2
+3. PEAR MDB2_Driver_Mysql
+4. PEAR Mail
+5. PEAR Mail_queue
+
