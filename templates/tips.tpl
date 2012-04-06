@@ -1,5 +1,23 @@
 {include file="header.tpl" title="Klikevent.com" jquery="true" tips=true }
 
+<div class="section page-header">
+    <h1> Tips </h1>
+    <div class="row">
+    </div>
+</div>
+
+<div class="row ">
+    <div class="span12 ">
+        <div class="tabbable ">
+            <ul class="nav nav-tabs">
+                <li class="active other "><a href="#overview" data-toggle="tab">Umum</a></li>
+                <li class="map "><a href="#map" data-toggle="tab">Pemilik Event</a></li>
+                <li class="other "><a href="#images" data-toggle="tab">Feedback</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
 <div class="row">
 <div class="span6 offset3">
 
