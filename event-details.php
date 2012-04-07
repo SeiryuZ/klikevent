@@ -1,9 +1,10 @@
 <?php
+require_once ('config.php');
 require ('smarty_setup.php');
 require_once ('MDB2.php');
 
 //init smarty
-
+$smarty = new MySmarty();
 
 //check or reject input
 $id = "";
@@ -86,7 +87,7 @@ if ( !$smarty->isCached('events-details.tpl' ,  $id) )
 	while ( $row = $res->fetchRow() )
     {
         //cek for image existance
-        $imgPath = $row ['eventcoverimage'];
+        $imgPath = STATIC_PATH."/".$row ['eventcoverimage'];
 
 
         if ( !file_exists($imgPath) )
