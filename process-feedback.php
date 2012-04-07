@@ -17,7 +17,7 @@ if ( PEAR::isError( $db ) )
 
 $name = 
 
-$sql = "INSERT INTO tips_event_anon (tipsCPName, tipsCPEmail, tipsContent) VALUES ";
+$sql = "INSERT INTO tips_feedback (feedbackCPName, feedbackCPEmail, feedbackContent) VALUES ";
 $sql .= "( ?,?, ?  )";
 $name ="";
 $email ="";
