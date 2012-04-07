@@ -40,7 +40,7 @@
             </div>
             <div class="span6">
                 <div class="row">
-                    <h3 class="description">{literal}[{/literal} {$item.eventDate} {literal}] {/literal}{$item.eventShortDescription}</h3>
+                    <h3 class="description">{literal}[{/literal}{$item.eventDate} {literal}] {/literal}{$item.eventShortDescription}</h3>
                 </div>
                 <div class="row text-center add-top">
             

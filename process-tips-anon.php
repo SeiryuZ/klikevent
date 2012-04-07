@@ -3,8 +3,7 @@ require ('smarty_setup.php');
 require_once ('MDB2.php');
 require_once ('db_param.php');
 
-//database configuration
-require_once ('db_param.php');
+
 
 //load database for hot item
 $db = MDB2::connect($dsn);

@@ -1,6 +1,8 @@
 <?php
+require_once ('config.php');
 require_once ('smarty_setup.php');
 require_once ('MDB2.php');
+
 
 //init smarty
 $smarty = new MySmarty();
@@ -45,10 +47,10 @@ if ( !$smarty->isCached('index.tpl') )
     while ( $row = $res->fetchRow() )
     {
         //cek for image existance
-        $imgPath = $row ['eventcoverimage'];
+        $imgPath = STATIC_PATH."/".$row ['eventcoverimage'];
         
-        if ( !file_exists($imgPath) )
-            $imgPath = "img/notfound.png";
+        if ( !file_exists( $imgPath ) )
+            $imgPath = "notfound.png";
 
         $date = date('d F', strtotime($row['eventdate']));
     
