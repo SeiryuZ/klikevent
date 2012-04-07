@@ -118,12 +118,12 @@ stLight.options(
       
       <div class="nav-collapse">
         <ul class="nav">
-          <li class="add-border-left {if $index} class=active {/if}"><a href="hot-event.php" title="View the Hottest Event around!"><i class="icon-home icon-white "></i>Hot Event</a></li>
+          <li class="add-border-left {if $index} active {/if}"><a href="hot-event.php" title="View the Hottest Event around!"><i class="icon-home icon-white "></i>Hot Event</a></li>
           <li class="add-border-left {if $todayEvent} active {/if}"><a href="todays-event.php" >Today's Event</a></li>
           <!--
           <li class="add-border-left {if $event} active{/if}"><a href="events.php">Event Calendar</a></li>-->
           <li class="add-border-left  {if $tips} active {/if}"><a id="nav" href="tips.php" title="Got information regarding events? Contact Us!" >Tips</a></li>
-          <li class="add-border-left add-border-right {if $tips} active {/if}"><a id="nav" href="subscribe.php" title="Subscribe to Us!" >Subscribe</a></li>
+          <li class="add-border-left add-border-right {if $subscribe} active {/if}"><a id="nav" href="subscribe.php" title="Subscribe to Us!" >Subscribe</a></li>
         </ul>
         <ul class="nav pull-right">
         <li class="dropdown ">

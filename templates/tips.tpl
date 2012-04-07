@@ -30,31 +30,31 @@
             <h3 class="alert-heading">Perhatian!</h3>
             Input dengan tanda * harus diisi
           </div>
-          <form class="form-horizontal" action="" method="POST">
+          <form class="form-horizontal" action="process-tips-anon.php" method="POST">
             <fieldset>
               <div id="legend" class="">
                 <legend class="">Form tips ini untuk Siapapun yang ingin memberikan tips ke KlikEvent</legend>
               </div>
               <div class="control-group">
-                <label class="control-label error" for="input01">Nama</label>
+                <label class="control-label error"  for="input01">Nama</label>
                 <div class="controls">
-                  <input type="text" placeholder="" class="input-xlarge">
+                  <input type="text" name="nama" placeholder="" class="input-xlarge">
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label error" for="input01">Email</label>
+                <label class="control-label error"  for="input01">Email</label>
                 <div class="controls">
-                  <input type="text" placeholder="" class="input-xlarge">
+                  <input type="text" name="email" placeholder="" class="input-xlarge">
                 </div>
               </div>
               <div class="control-group">    
                 <label class="control-label">Tips *</label>
                 <div class="controls">
-                  <textarea class="input-xlarge" rows="10"></textarea>
+                  <textarea class="input-xlarge" name="content" rows="10"></textarea>
                 </div>
               </div>
             </fieldset> 
-
+            <button class="btn-large btn-primary" >Submit</button>
           </form>
         </div>
       </div>

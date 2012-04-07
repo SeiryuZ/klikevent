@@ -1,4 +1,4 @@
-{include file="header.tpl" title="Klikevent.com" jquery="true"  }
+{include file="header.tpl" title="Klikevent.com" jquery="true"   subscribe=true}
 
 <div class="hero-unit">
 	<h1>Subscribe to Us!</h1>

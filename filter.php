@@ -57,10 +57,10 @@ if ( !$smarty->isCached ("filter.php", $filter ))
 	}
 	
 	$sql =  'SELECT eventTitle, count, eventCoverImage, eventShortDescription, eventID, eventcategory FROM event '; 
-    $sql .= "WHERE eventCategory LIKE '%$filterCode%' ";
+    $sql .= "WHERE eventCategory LIKE '$filterCode' ";
     $sql .= 'ORDER BY updated '; 
 
-echo $sql;
+
 
 	//query database for items with the same filter
     $res = $db->query ( $sql );
@@ -93,6 +93,12 @@ echo $sql;
             }
                 
         }
+
+        //cek for image existance
+        $imgPath = $row ['eventcoverimage'];
+
+        if ( !file_exists($imgPath) )
+            $imgPath = "img/notfound.png";
 
 		$eventItems [] = array (
 				"id" => $row['eventid'],
