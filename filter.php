@@ -1,5 +1,6 @@
 <?php
 require ('smarty_setup.php');
+require ('config.php');
 require_once ('MDB2.php');
 require_once ('db_param.php');
 
@@ -94,9 +95,10 @@ if ( !$smarty->isCached ("filter.php", $filter ))
                 
         }
 
-        //cek for image existance
-        $imgPath = $row ['eventcoverimage'];
 
+        //cek for image existance
+        $imgPath = STATIC_PATH."/".$row ['eventcoverimage'];
+        
         if ( !file_exists($imgPath) )
             $imgPath = "img/notfound.png";
 
