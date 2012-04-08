@@ -3,20 +3,50 @@
 require ('config.php');
 require_once ('MDB2.php');
 require_once ('db_param.php');
-
+require ('smarty_setup.php');
 //get all the remaining post values
 $name = $_POST['nama'];
 $email = $_POST['email'];
 $eventTitle = $_POST['eventTitle'];
 $location1 = $_POST['location1'];
 $location2 = $_POST['location2'];
-//$category = $_POST["category"];
-$eventCategory  = "1110001";
+$category = $_POST["category"];
+$eventCategory  = "";
 $date1 	 = $_POST['date1'];
 $eventShortDescription = $_POST['eventShortDescription'];
 $eventDescription = $_POST['eventDescription'];
 $eventCoverImage = "";
 $eventImage="";
+
+
+
+// generate the eventCategory variable
+$categoryList = array (	"paid", "day", "night", 
+						"artandhobby", "exhibition",
+						"education","others");
+
+foreach ( $categoryList as $categoryItem )
+{
+	$found = false;
+
+	foreach ( $category as $inputtedCategory )
+	{
+		if ( strcasecmp( $categoryItem, $inputtedCategory) == 0 )
+		{
+			$eventCategory .= "1";
+			$found = true;
+		}
+
+		if ( $found )
+			break;
+	}
+
+	if ( !$found )
+		$eventCategory .="0";
+}
+
+
+
 
 $imgList = array();
 
@@ -117,9 +147,10 @@ die ( $result->getMessage()."<hr/>".$result->getUserInfo());
 
 //disconnect database
 $db->disconnect();
+//init smarty
+$smarty = new MySmarty();
 
-
-
+$smarty->display ('thanks.tpl');
 
 
 

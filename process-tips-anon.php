@@ -40,6 +40,9 @@ die ( $result->getMessage() );
 //disconnect database
 $db->disconnect();
 
+//init smarty
+$smarty = new MySmarty();
+$smarty->display ('thanks.tpl');
 
 
 ?>
