@@ -101,7 +101,7 @@
         </div><div class="control-group">
 
           <!-- Text input-->
-          <label class="control-label" for="input01">Lokasi / Alamat *</label>
+          <label class="control-label" for="input01">Lokasi / Alamat Event *</label>
           <div class="controls">
             <input type="text" placeholder="" name="location1" class="input-xlarge">
             <p class="help-block"></p>
@@ -121,12 +121,7 @@
           <div class="controls">
             <select class="input-xlarge" name="category[]">
       <option>paid</option>
-      <option>day</option>
-      <option>night</option>
-      <option>artandhobby</option>
-      <option>exhibition</option>
-      <option>education</option>
-      <option>others</option>
+      <option>free</option>
     </select>
       
           </div>
@@ -137,13 +132,10 @@
           <label class="control-label"></label>     
           <div class="controls">
             <select class="input-xlarge" name="category[]">
-      <option>paid</option>
       <option>day</option>
       <option>night</option>
-      <option>artandhobby</option>
-      <option>exhibition</option>
-      <option>education</option>
-      <option>others</option></select>
+      <option>all day</option>
+</select>
           </div>
 
         </div><div class="control-group">     
@@ -152,9 +144,6 @@
           <label class="control-label"></label>     
           <div class="controls">
             <select class="input-xlarge" name="category[]">
-      <option>paid</option>
-      <option>day</option>
-      <option>night</option>
       <option>artandhobby</option>
       <option>exhibition</option>
       <option>education</option>

@@ -37,6 +37,13 @@ foreach ( $categoryList as $categoryItem )
 			$found = true;
 		}
 
+		if ( $inputtedCategory == "all day" && 
+			($categoryItem == "day" || $categoryItem == "night") )
+		{
+			$eventCategory .= "1";
+			$found = true;
+		}
+
 		if ( $found )
 			break;
 	}
