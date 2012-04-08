@@ -20,7 +20,7 @@
 			<a href="filter.php?filter=artandhobby"><p>Art &amp; Hobbies</p></a>
 			<a href="filter.php?filter=exhibition"><p>Exhibition</p></a>
 			<a href="filter.php?filter=education"><p>Education</p></a>
-			<a href="filter.php?filter=other"><p>Other</p></a>
+			<a href="filter.php?filter=others"><p>Others</p></a>
 		</div>
 		<div class="span3">
 			<p><strong>About</strong><p>
