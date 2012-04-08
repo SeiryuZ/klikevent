@@ -94,9 +94,10 @@ if ( !$smarty->isCached ("filter.php", $filter ))
                 
         }
 
-        //cek for image existance
-        $imgPath = $row ['eventcoverimage'];
 
+        //cek for image existance
+        $imgPath = STATIC_PATH."/".$row ['eventcoverimage'];
+        
         if ( !file_exists($imgPath) )
             $imgPath = "img/notfound.png";
 
