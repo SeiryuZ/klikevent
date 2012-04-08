@@ -120,10 +120,14 @@
           <label class="control-label">Kategori *</label>     
           <div class="controls">
             <select class="input-xlarge" name="category[]">
-      <option>Enter</option>
-      <option>Your</option>
-      <option>Options</option>
-      <option>Here!</option></select>
+      <option>paid</option>
+      <option>day</option>
+      <option>night</option>
+      <option>artandhobby</option>
+      <option>exhibition</option>
+      <option>education</option>
+      <option>others</option>
+    </select>
       
           </div>
 
@@ -133,10 +137,13 @@
           <label class="control-label"></label>     
           <div class="controls">
             <select class="input-xlarge" name="category[]">
-      <option>Enter</option>
-      <option>Your</option>
-      <option>Options</option>
-      <option>Here!</option></select>
+      <option>paid</option>
+      <option>day</option>
+      <option>night</option>
+      <option>artandhobby</option>
+      <option>exhibition</option>
+      <option>education</option>
+      <option>others</option></select>
           </div>
 
         </div><div class="control-group">     
@@ -145,10 +152,14 @@
           <label class="control-label"></label>     
           <div class="controls">
             <select class="input-xlarge" name="category[]">
-      <option>Enter</option>
-      <option>Your</option>
-      <option>Options</option>
-      <option>Here!</option></select>
+      <option>paid</option>
+      <option>day</option>
+      <option>night</option>
+      <option>artandhobby</option>
+      <option>exhibition</option>
+      <option>education</option>
+      <option>others</option>
+    </select>
           </div>
 
         </div><div class="control-group">
