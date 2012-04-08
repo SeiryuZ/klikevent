@@ -4,7 +4,7 @@
 
 
 <div class="section page-header">
-    <h1> Events Dengan Kategori {$filter} </h1>
+    <h1> Events Dengan Kategori {$filter|capitalize} </h1>
     <div class="row">
     </div>
 </div>

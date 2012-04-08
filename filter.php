@@ -116,7 +116,8 @@ if ( !$smarty->isCached ("filter.php", $filter ))
 
 		$isFound = true;
 	}
-
+if ( $filter == "artandhobby")
+	$filter = "Art and Hobby";
 
 	//assign
 	$smarty->assign("eventItems",$eventItems);
@@ -124,6 +125,8 @@ if ( !$smarty->isCached ("filter.php", $filter ))
     $smarty->assign("categoryList", $categoryList);
     $smarty->assign("filter", $filter);
 }
+
+
 
 $smarty->display( 'filter.tpl', $filter);
 
