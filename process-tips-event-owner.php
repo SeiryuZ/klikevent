@@ -21,9 +21,9 @@ $eventImage="";
 
 
 // generate the eventCategory variable
-$categoryList = array (	"paid", "day", "night", 
-						"artandhobby", "exhibition",
-						"education","others");
+$categoryList = array (	"Paid", "Day", "Night", 
+						"Art and Hobby", "Exhibition",
+						"Education","Others");
 
 foreach ( $categoryList as $categoryItem )
 {
