@@ -53,6 +53,8 @@ if ( !$smarty->isCached ("filter.php", $filter ))
 
 		if ( $filter == $row['categoryname'])
 			$filterCode .="1";
+		else if ( $row['categoryname']== "paid"  && $filter == "free")
+			$filterCode .="0";
 		else
 			$filterCode .="_";
 	}

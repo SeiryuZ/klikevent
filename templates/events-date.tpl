@@ -18,9 +18,15 @@
  <div class="row add-bottom">
     <div class="span12">
     <div class="alert alert-info">
-        {foreach $categoryList as $category}
-        <a href="#" onClick="filter('{$category}')">{$category}</a>&nbsp;&nbsp;&nbsp;
-        {/foreach}
+
+        <a href="#" onClick="filter('paid')">Paid</a>&nbsp;&nbsp;&nbsp;
+        <a href="#" onClick="filter('day')">Day</a>&nbsp;&nbsp;&nbsp;
+        <a href="#" onClick="filter('night')">Night</a>&nbsp;&nbsp;&nbsp;
+        <a href="#" onClick="filter('artandhobby')">Art and Hobby</a>&nbsp;&nbsp;&nbsp;
+        <a href="#" onClick="filter('exhibition')">Exhibition</a>&nbsp;&nbsp;&nbsp;
+        <a href="#" onClick="filter('education')">Education</a>&nbsp;&nbsp;&nbsp;
+        <a href="#" onClick="filter('others')">Others</a>&nbsp;&nbsp;&nbsp;
+      
     </div>
     </div>
 </div> 

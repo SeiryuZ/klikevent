@@ -14,6 +14,7 @@
 		<div class="span3">
 			<p><strong>Categories</strong><p>
 			<a href="filter.php?filter=paid"><p>Paid</p></a>
+			<a href="filter.php?filter=free"><p>Free</p></a>
 			<a href="filter.php?filter=day"><p>Day</p></a>
 			<a href="filter.php?filter=night"><p>Night</p></a>
 			<a href="filter.php?filter=artandhobby"><p>Art &amp; Hobbies</p></a>
