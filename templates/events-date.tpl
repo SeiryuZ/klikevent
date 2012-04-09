@@ -36,13 +36,13 @@
     <div class="span12">
         <span class="page-header left">
             <a href="http://www.klikevent.com/event-details.php?id={$item.id}" class="no-style-link">
-            <h1 class=" add-bottom ">{$item.eventTitle}</h1></span>
-            </a>
+            <h1 class=" add-bottom ">{$item.eventTitle}</h1></a></span>
+            
         <div class="row">
             <div class="span6">
-                <div class="row"><img class="image"
-                    src="{$item.eventCoverImage}"></div>
-                <div class="row"></div>
+                <img class="image"
+                    src="{$item.eventCoverImage}">
+                
             </div>
             <div class="span6">
                 <div class="row">

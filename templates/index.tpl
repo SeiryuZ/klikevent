@@ -1,6 +1,7 @@
 {* Smarty *}
 
 {include file="header.tpl" title="Klikevent.com" jquery="true" index=true socialmedia=true}
+<div class="add-min-height">
 
 
 {* Iterate each hot item to be shown *}
@@ -9,13 +10,13 @@
     <div class="span12">
         <span class="page-header {cycle values="left, aaa"}">
             <a href="http://www.klikevent.com/event-details.php?id={$item.id}" class="no-style-link">
-            <h1 class=" add-bottom ">{$item.eventTitle}</h1></span>
-            </a>
+            <h1 class=" add-bottom ">{$item.eventTitle}</h1></a></span>
+            
         <div class="row">
             <div class="span6">
-                <div class="row"><img class="image"
+                <img class="image"
                     src="{$item.eventCoverImage}" >
-                </div>
+                
                 
             </div>
             <div class="span6">

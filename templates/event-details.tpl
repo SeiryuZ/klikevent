@@ -18,7 +18,7 @@
         <div class="tabbable ">
             <ul class="nav nav-tabs">
                 <li class="active other "><a href="#overview" data-toggle="tab">Overview</a></li>
-                <li class="map "><a href="#map" data-toggle="tab">Map</a></li>
+                <!--<li class="map "><a href="#map" data-toggle="tab">Map</a></li>-->
                 <li class="other "><a href="#images" data-toggle="tab">Images</a></li>
             </ul>
         </div>
@@ -67,10 +67,11 @@ function changeTab()
                 <div class="row">
                     <div class="span8">
                         <strong><p>Location</p></strong>
-                        <p>{$item.location1}</p>
-                        <p>{$item.location2}</p>
+                        <p>{$details.location1}</p>
+                        <p>{$details.location2}</p>
                         <p></p>
-                        <a href="#map" data-toggle="tab" onClick="changeTab();"><p>See Map</p></a>
+                        <!--
+                        <a href="#map" data-toggle="tab" onClick="changeTab();"><p>See Map</p></a>-->
                     </div>
                 </div>
                 <hr/>
@@ -84,12 +85,13 @@ function changeTab()
                 <div class="row">
                     <div class="span8">
                         <strong><p>Further Info</p></strong>
-                        <p></p>
+                        <p>{$details.info}</p>
                     </div>
                 </div>
                 
                 
             </div>
+            <!--
             <div class="tab-pane" id="map">
                 <div class="row">
                     <div class="span8">
@@ -104,6 +106,7 @@ function changeTab()
                     </div>
                 </div>
             </div>
+        -->
             <div class="tab-pane" id="images">
                 <p>No gallery</p>
             </div>

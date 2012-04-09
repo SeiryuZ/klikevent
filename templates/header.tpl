@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="robots" content="noindex,nofollow"/>
+    <META NAME="Description" CONTENT="Klikevent adalah pusat informasi digital yang menyajikan seluruh informasi terkini mengenai event - event di Ibukota Indonesia, Jakarta.">
     <link href="style.css" rel="stylesheet" type="text/css">
     <link href="external.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" media="all" href="css/jsDatePick_ltr.min.css" />
@@ -118,6 +118,7 @@ stLight.options(
       
       <div class="nav-collapse">
         <ul class="nav">
+            <li> <a href="#" id="nav">beta</a></li>
           <li class="add-border-left {if $index} active {/if}"><a href="hot-event.php" title="View the Hottest Event around!"><i class="icon-home icon-white "></i>Hot Event</a></li>
           <li class="add-border-left {if $todayEvent} active {/if}"><a href="todays-event.php" >Today's Event</a></li>
           <!--
@@ -145,4 +146,4 @@ stLight.options(
 </div><!-- /.navbar -->
 
 <!-- STARTING CONTAINER -->
-<div class="container main-container">
+<div class="container main-container ">

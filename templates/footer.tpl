@@ -3,10 +3,10 @@
 	<!-- FOOTER SECTION -->
 
 	<div class="section add-top add-bottom">
-    	<p>This website and its content is &copy; copyright of KlikEvent - &copy; KlikEvent 2012. All rights reserved.</p>
-
+    	<p><!--This website and its content is &copy; copyright of KlikEvent - -->&copy; KlikEvent 2012. All rights reserved.</p>
+<!--
 <p>Any redistribution or reproduction of part or all of the contents in any form is prohibited without our express written permission</p>
-
+-->
 
 	</div>
 	<hr/>
@@ -24,8 +24,8 @@
 		</div>
 		<div class="span3">
 			<p><strong>About</strong><p>
-			<p>About</p>
-			<p>Contact Us</p>
+			<a href="about.php"><p>About</p></a>
+			<a href="tips.php"><p>Contact Us</p></a>
 			<p>Terms and Condition</p>
 		</div>
 		<div class="span3">

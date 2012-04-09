@@ -87,7 +87,7 @@ if ( !$smarty->isCached('events-details.tpl' ,  $id) )
 	while ( $row = $res->fetchRow() )
     {
         //cek for image existance
-        $imgPath = STATIC_PATH."/".$row ['eventcoverimage'];
+        $imgPath = STATIC_PATH."/events/".$row ['eventcoverimage'];
 
 
         if ( !file_exists($imgPath) )
@@ -106,6 +106,7 @@ if ( !$smarty->isCached('events-details.tpl' ,  $id) )
                                     "eventShortDescription"=> $row['eventshortdescription'],
                                     "isHot" => $row['ishot'],
                                     "count" => $row['count'],
+                                    "info" => $row['info'],
                                     "updated" => $row['updated']
                                     
                                  );

@@ -98,7 +98,7 @@ if ( !$smarty->isCached('events-date.tpl', $date) )
 	while ( $row = $res->fetchRow() )
     {
         //cek for image existance
-        $imgPath = STATIC_PATH."/".$row ['eventcoverimage'];
+        $imgPath = STATIC_PATH."/events/".$row ['eventcoverimage'];
 
         if ( !file_exists( $imgPath) )
             $imgPath = "notfound.png";
