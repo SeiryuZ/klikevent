@@ -19,7 +19,7 @@
             <ul class="nav nav-tabs">
                 <li class="active other "><a href="#overview" data-toggle="tab">Overview</a></li>
                 <!--<li class="map "><a href="#map" data-toggle="tab">Map</a></li>-->
-                <li class="other "><a href="#images" data-toggle="tab">Images</a></li>
+                <li class="other "><a href="#images" data-toggle="tab">Gallery</a></li>
             </ul>
         </div>
     </div>
@@ -49,7 +49,7 @@ function changeTab()
         <div class="row">
             <div class="span4 text-center">
                 <span class='st_facebook_hcount' st_url="http://www.klikevent.com/event-details.php?id={$item.id}" st_title="{$item.eventTitle}" displayText='Facebook'></span>
-                <span class='st_twitter_hcount' st_url="http://www.klikevent.com/event-details.php?id={$item.id}" st_title="{$item.eventTitle} via @StvnOnly #KlikEvent" displayText='Tweet'></span>
+                <span class='st_twitter_hcount' st_url="http://www.klikevent.com/event-details.php?id={$item.id}" st_title="{$item.eventTitle} via @KlikEventID #KlikEvent" displayText='Tweet'></span>
                 <span class='st_pinterest_hcount' st_url="http://www.klikevent.com/event-details.php?id={$item.id}" st_title="{$item.eventTitle}" displayText='Pinterest'></span>
             </div>
         </div>
@@ -108,7 +108,13 @@ function changeTab()
             </div>
         -->
             <div class="tab-pane" id="images">
-                <p>No gallery</p>
+                {if $details.gallery|@count lt 1}
+                <p>Tidak ada Gallery</p>
+                {/if}
+                {foreach from=$details.gallery item=item name=gallery}
+                <img class="image"
+                    src="{$item}" >
+                {/foreach}
             </div>
         </div>
     </div>

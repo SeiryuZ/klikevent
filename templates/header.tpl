@@ -7,13 +7,13 @@
     <link rel="stylesheet" type="text/css" media="all" href="css/jsDatePick_ltr.min.css" />
 
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+
     {if $jquery}
     <script type="text/javascript" src="js/jquery.js"></script>
     
     <script type="text/javascript" src="js/bootstrap.js"></script>
 
     <script type="text/javascript" src="js/jsDatePick.jquery.min.1.3.js"></script>
-
 
     {/if}
 
@@ -30,6 +30,9 @@ stLight.options(
 {/literal}
 {/if}
 
+{if $edit}
+<script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
+{/if}
     {if $filter}    
     <script type="text/javascript">
     

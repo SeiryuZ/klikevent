@@ -57,7 +57,7 @@ if ( !$smarty->isCached('events-date.tpl', $date) )
 	
 	//create query
     $sql =  'SELECT eventTitle, count, eventCoverImage, eventShortDescription, eventID, eventcategory FROM event '; 
-    $sql .= "WHERE eventDate = '$date' ";
+    $sql .= "WHERE eventDate = '$date' AND isPublished = 1 ";
     $sql .= 'ORDER BY updated '; 
 	
 	//process query

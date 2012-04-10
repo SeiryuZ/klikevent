@@ -16,7 +16,7 @@ echo "<td><b>IsPublished</b></td>";
 echo "<td><b>Count</b></td>"; 
 echo "<td><b>Updated</b></td>"; 
 echo "</tr>"; 
-$result = mysql_query("SELECT * FROM `event`") or trigger_error(mysql_error()); 
+$result = mysql_query("SELECT * FROM `event` ORDER BY Updated DESC limit 0,20") or trigger_error(mysql_error()); 
 while($row = mysql_fetch_array($result)){ 
 foreach($row AS $key => $value) { $row[$key] = stripslashes($value); } 
 echo "<tr>";  

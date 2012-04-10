@@ -85,12 +85,12 @@ foreach ( $imgList as $img )
 	$path = STATIC_PATH."/events/"."$foldername/".$img[0];
 	//copy the file
 	copy($HTTP_POST_FILES['imgfile']['tmp_name'][$img[1]], $path);
-	$img [0] = $path;
+	
 
-	if ( $img[1] == 0 )
-		$eventCoverImage = $path;
+if ( $img[1] == 0 )
+		$eventCoverImage = "$foldername/".$img[0];
 	else
-		$eventImage .= $path.":";
+		$eventImage .= "$foldername/".$img[0].":";
 }
 
 
@@ -114,20 +114,9 @@ $sql .= "( '$eventTitle',
 				  	'$name',
 				  	'$email'  )";
 
-$message = array( 	$eventTitle, 
-				  	$eventCategory, 
-				  	$date1,
-				  	$location1,
-				  	$location2,
-				  	$eventShortDescription,
-				  	$eventDescription,
-				  	$eventCoverImage,
-				  	$eventImage,
-				  	$name,
-				  	$email,
-				  	);
 
-//load database for hot item
+
+
 $db = MDB2::connect($dsn);
 
 //check for DB error
@@ -139,14 +128,7 @@ if ( PEAR::isError( $db ) )
 
 $result = $db->exec($sql);
 
-//echo $sql;
-/*
-$query = $db->prepare( $sql, MDB2_PREPARE_MANIP );
-print_r($_POST);
-echo "<hr/>";
-print_r ($message);
-$result = $query->execute($message);
-*/
+
 
 if (PEAR::isError($result)) {
 die ( $result->getMessage()."<hr/>".$result->getUserInfo());

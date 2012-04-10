@@ -93,6 +93,26 @@ if ( !$smarty->isCached('events-details.tpl' ,  $id) )
         if ( !file_exists($imgPath) )
             $imgPath = "img/notfound.png";
 
+        $imagesPath = $row['eventimage'];
+
+        $imagesPath = explode(':', $imagesPath);
+
+        for ( $i = 0 ; $i < count( $imagesPath) -  1 ; $i++ )
+        {
+            $tempPath = STATIC_PATH."/events/".$imagesPath[$i];
+
+            if ( !file_exists($tempPath) )
+                $imagesPath[$i] = "img/notfound.png";
+            else
+                $imagesPath[$i] = $tempPath;
+        }
+
+        //check whether no gallery images
+        if ( empty ($imagesPath[0]) )
+        {
+            $imagesPath = null;
+        }
+
         //portability options is on, so collumn must be all in LC
         $eventDetails [] =  array(  
 
@@ -107,6 +127,7 @@ if ( !$smarty->isCached('events-details.tpl' ,  $id) )
                                     "isHot" => $row['ishot'],
                                     "count" => $row['count'],
                                     "info" => $row['info'],
+                                    "gallery" => $imagesPath,
                                     "updated" => $row['updated']
                                     
                                  );
