@@ -1,0 +1,15 @@
+This is a klikevent project - Symfony Branch.
+
+
+This project is going to be used in Jakarta as a means
+to promote an event that is happening around Jakarta
+
+
+Contributor List:
+1. Steven 'Only' - Co-Founder
+
+
+This branch is created to change the current messy code to a more structured code with scalability in mind using framework. We choose Symfony.
+
+Technical Note:
+This package is without vendor specific install, Anyone cloning this package need to do "php bin/vendors install" script to download all necessary 3rd Parties Libraries

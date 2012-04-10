@@ -1,0 +1,31 @@
+Events
+	1. List all Events <From Current Date>
+	2. List all Events on a certain Date
+	3. List all Events on a certain category
+	4. List all events that fit search criteria
+	5. Search Events
+	6. List all Events on a certain Month
+	7. List all Events on a certain Year
+	8. List all Hot-Events
+
+User	
+	1. Log in
+	2. Register
+		a) From our Site
+		b) Using Facebook
+	3. <optional> Subscribe to newsletter
+	4. Favorite Events
+	5. Edit profile
+	6. List all favorited events
+
+Event-Owner
+	1. Submit Event
+	2. Email link and password to edit event details
+	3. Report for the page
+
+Admin
+	1. Log in
+	2. User without admin role cannot log in
+	3. CRUD of events
+	4. Process tips and feedbacks
+
