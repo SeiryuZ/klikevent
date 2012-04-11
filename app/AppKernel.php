@@ -24,7 +24,8 @@ class AppKernel extends Kernel
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new JMS\AopBundle\JMSAopBundle(),
-            
+,
+            new KlikEvent\AdminBundle\KlikEventAdminBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

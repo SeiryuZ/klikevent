@@ -1,3 +1,8 @@
+KlikEventAdminBundle_admin_klik_event_admin_bundle_admin:
+    resource: "@KlikEventAdminBundle/Controller/Admin/"
+    type:     admingenerator
+    prefix:   /admin/klik_event_admin_bundle/admin
+
 KlikEventEventBundle:
     resource: "@KlikEventEventBundle/Resources/config/routing.yml"
     prefix:   /
