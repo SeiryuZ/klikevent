@@ -1,0 +1,100 @@
+<?php
+namespace KlikEvent\EventBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="events")
+ */
+class Event
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    protected $eventTitle;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    protected $eventLocation1;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    protected $eventLocation2;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected $eventShortDescription;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected $eventDescription;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected $eventFurtherDescription;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Category", inversedBy="events")
+     * @ORM\JoinTable(name="events_categories")
+     */
+    protected $eventCategories;
+
+    public function __construct() {
+        $this->eventCategories = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    protected $eventDateTimeBegin;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    protected $eventDateTimeEnd;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    protected $eventCoverImage;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected $eventImages;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $isHot;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $isPublished;
+
+    /**
+     * @ORM\Column(type="bigint")
+     */
+    protected $viewCount;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    protected $timestamp;
+
+}
+
+
