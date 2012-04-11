@@ -29,10 +29,20 @@ security:
             logout:
                 path:   /demo/secured/logout
                 target: /demo/
-            #anonymous: ~
-            #http_basic:
-            #    realm: "Secured Demo Area"
+            anonymous: ~
+            http_basic:
+                realm: "Secured Demo Area"
+
+        the_rest:
+            pattern: ^/
+            anonymous: ~
+            form_login:
+                login_path:  /login
+                check_path:  /login_check
+        
+
 
     access_control:
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
         #- { path: ^/_internal, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }
+        - { path: ^/admin, roles:ROLE_ADMIN}

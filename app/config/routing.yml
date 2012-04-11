@@ -1,6 +1,14 @@
+
 KlikEventEventBundle:
     resource: "@KlikEventEventBundle/Resources/config/routing.yml"
     prefix:   /
+
+login:
+    pattern:   /login
+    defaults:  { _controller: KlikEventSecurityBundle:Security:login }
+
+login_check:
+    pattern:   /login_check
 
 KlikEventEventBundle_EventAdmin:
     resource: "@KlikEventEventBundle/Resources/config/routing/event.yml"

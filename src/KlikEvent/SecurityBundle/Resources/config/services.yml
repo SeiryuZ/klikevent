@@ -1,0 +1,7 @@
+parameters:
+#    klik_event_security.example.class: KlikEvent\SecurityBundle\Example
+
+services:
+#    klik_event_security.example:
+#        class: %klik_event_security.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
