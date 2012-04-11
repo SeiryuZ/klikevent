@@ -33,19 +33,31 @@
 [twig-extensions]
     git=https://github.com/fabpot/Twig-extensions.git
 
+[cg-library]
+    git=https://github.com/schmittjoh/cg-library
+
 [metadata]
     git=https://github.com/schmittjoh/metadata.git
-    version=1.0.0
+
 
 [SensioFrameworkExtraBundle]
     git=https://github.com/sensio/SensioFrameworkExtraBundle.git
     target=/bundles/Sensio/Bundle/FrameworkExtraBundle
     version=origin/2.0
 
+
 [JMSSecurityExtraBundle]
     git=https://github.com/schmittjoh/JMSSecurityExtraBundle.git
     target=/bundles/JMS/SecurityExtraBundle
-    version=origin/1.0.x
+    version=origin/master
+
+[JMSAopBundle]
+    git=https://github.com/schmittjoh/JMSAopBundle.git
+    target=/bundles/JMS/AopBundle
+
+[JMSDiExtraBundle]
+    git=https://github.com/schmittjoh/JMSDiExtraBundle.git
+    target=/bundles/JMS/DiExtraBundle
 
 [SensioDistributionBundle]
     git=https://github.com/sensio/SensioDistributionBundle.git
@@ -74,3 +86,27 @@
     git=https://github.com/KnpLabs/KnpMenu.git
     target=/KnpMenu
 
+
+[TwigGenerator]
+    git=git://github.com/cedriclombardot/TwigGenerator.git
+    target=/twig-generator
+
+[PagerFanta]
+    git=git://github.com/whiteoctober/Pagerfanta.git
+    target=/pagerfanta
+
+[WhiteOctoberPagerfantaBundle]
+    git=git://github.com/whiteoctober/WhiteOctoberPagerfantaBundle.git
+    target=/bundles/WhiteOctober/PagerfantaBundle
+
+[doctrine-fixtures]
+    git=git://github.com/doctrine/data-fixtures.git
+    target=/doctrine-fixtures
+
+[DoctrineFixturesBundle]
+    git=git://github.com/doctrine/DoctrineFixturesBundle.git
+    target=/bundles/Doctrine/Bundle/FixturesBundle
+
+[DoctrineBundle]
+    git=git://github.com/doctrine/DoctrineBundle.git
+    target=/bundles/Doctrine/Bundle/DoctrineBundle

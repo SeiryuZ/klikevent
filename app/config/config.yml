@@ -56,10 +56,17 @@ swiftmailer:
     password:  %mailer_password%
 
 jms_security_extra:
-    secure_controllers:  true
     secure_all_services: false
+    expressions: true
 
 knp_menu:
     twig: true
 
+admingenerator_generator:
+    base_admin_template: AdmingeneratorGeneratorBundle::base_admin_assetic_less.html.twig
+    use_propel: false
+    use_doctrine_orm: true
+    use_doctrine_odm: false
 
+jms_aop:
+    cache_dir: %kernel.cache_dir%/jms_aop

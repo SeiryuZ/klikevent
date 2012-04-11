@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
@@ -20,7 +20,11 @@ class AppKernel extends Kernel
             new KlikEvent\EventBundle\KlikEventEventBundle(),
             // Admin Generator
             new Admingenerator\GeneratorBundle\AdmingeneratorGeneratorBundle(),
-            new Knp\Bundle\MenuBundle\KnpMenuBundle()
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
+            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+            new JMS\AopBundle\JMSAopBundle(),
+            
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
