@@ -410,4 +410,24 @@ class Event
     {
         return $this->eventCategories;
     }
+
+    /**
+     * Set eventVideos
+     *
+     * @param text $eventVideos
+     */
+    public function setEventVideos($eventVideos)
+    {
+        $this->eventVideos = $eventVideos;
+    }
+
+    /**
+     * Get eventVideos
+     *
+     * @return text 
+     */
+    public function getEventVideos()
+    {
+        return $this->eventVideos;
+    }
 }
