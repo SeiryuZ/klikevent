@@ -128,8 +128,8 @@ if ( !$smarty->isCached('events-details.tpl' ,  $id) )
                                     "count" => $row['count'],
                                     "info" => $row['info'],
                                     "gallery" => $imagesPath,
-                                    "updated" => $row['updated']
-                                    
+                                    "updated" => $row['updated'],
+                                    "video" => $row['video']
                                  );
         $isFound = true;
     }

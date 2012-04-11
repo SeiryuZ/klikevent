@@ -59,7 +59,7 @@ if ( !$smarty->isCached ("filter.php", $filter ))
 			$filterCode .="_";
 	}
 	
-	$sql =  'SELECT eventTitle, count, eventCoverImage, eventShortDescription, eventID, eventcategory FROM event '; 
+	$sql =  'SELECT eventTitle, count, eventDate, eventCoverImage, eventShortDescription, eventID, eventcategory FROM event '; 
     $sql .= "WHERE eventCategory LIKE '$filterCode' ";
     $sql .= 'ORDER BY updated '; 
 
@@ -114,7 +114,7 @@ if ( !$smarty->isCached ("filter.php", $filter ))
                             "category" => $category,
                             "count" => $row['count'],
                             "eventCoverImage" =>  $imgPath,
-                            "eventDate" => $date,
+                            "eventDate" => date('d F', strtotime($row["eventdate"])),
 			);
 
 		$isFound = true;
