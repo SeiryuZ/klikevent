@@ -106,4 +106,9 @@ class Category
     {
         return $this->events;
     }
+
+    public function __toString()
+    {
+        return $this->categoryName;
+    }
 }

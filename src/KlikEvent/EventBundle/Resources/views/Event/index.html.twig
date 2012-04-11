@@ -1,0 +1,65 @@
+<h1>Event list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Eventtitle</th>
+            <th>Eventlocation1</th>
+            <th>Eventlocation2</th>
+            <th>Eventshortdescription</th>
+            <th>Eventdescription</th>
+            <th>Eventfurtherdescription</th>
+            <th>Eventdatetimebegin</th>
+            <th>Eventdatetimeend</th>
+            <th>Eventcoverimage</th>
+            <th>Eventimages</th>
+            <th>Eventvideos</th>
+            <th>Ishot</th>
+            <th>Ispublished</th>
+            <th>Viewcount</th>
+            <th>Timestamp</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('event_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.eventTitle }}</td>
+            <td>{{ entity.eventLocation1 }}</td>
+            <td>{{ entity.eventLocation2 }}</td>
+            <td>{{ entity.eventShortDescription }}</td>
+            <td>{{ entity.eventDescription }}</td>
+            <td>{{ entity.eventFurtherDescription }}</td>
+            <td>{% if entity.eventDateTimeBegin %}{{ entity.eventDateTimeBegin|date('Y-m-d H:i:s') }}{% endif%}</td>
+            <td>{% if entity.eventDateTimeEnd %}{{ entity.eventDateTimeEnd|date('Y-m-d H:i:s') }}{% endif%}</td>
+            <td>{{ entity.eventCoverImage }}</td>
+            <td>{{ entity.eventImages }}</td>
+            <td>{{ entity.eventVideos }}</td>
+            <td>{{ entity.isHot }}</td>
+            <td>{{ entity.isPublished }}</td>
+            <td>{{ entity.viewCount }}</td>
+            <td>{% if entity.timestamp %}{{ entity.timestamp|date('Y-m-d H:i:s') }}{% endif%}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('event_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('event_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('event_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>

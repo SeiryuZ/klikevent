@@ -1,0 +1,89 @@
+<h1>Event</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Eventtitle</th>
+            <td>{{ entity.eventTitle }}</td>
+        </tr>
+        <tr>
+            <th>Eventlocation1</th>
+            <td>{{ entity.eventLocation1 }}</td>
+        </tr>
+        <tr>
+            <th>Eventlocation2</th>
+            <td>{{ entity.eventLocation2 }}</td>
+        </tr>
+        <tr>
+            <th>Eventshortdescription</th>
+            <td>{{ entity.eventShortDescription }}</td>
+        </tr>
+        <tr>
+            <th>Eventdescription</th>
+            <td>{{ entity.eventDescription }}</td>
+        </tr>
+        <tr>
+            <th>Eventfurtherdescription</th>
+            <td>{{ entity.eventFurtherDescription }}</td>
+        </tr>
+        <tr>
+            <th>Eventdatetimebegin</th>
+            <td>{{ entity.eventDateTimeBegin|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Eventdatetimeend</th>
+            <td>{{ entity.eventDateTimeEnd|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Eventcoverimage</th>
+            <td>{{ entity.eventCoverImage }}</td>
+        </tr>
+        <tr>
+            <th>Eventimages</th>
+            <td>{{ entity.eventImages }}</td>
+        </tr>
+        <tr>
+            <th>Eventvideos</th>
+            <td>{{ entity.eventVideos }}</td>
+        </tr>
+        <tr>
+            <th>Ishot</th>
+            <td>{{ entity.isHot }}</td>
+        </tr>
+        <tr>
+            <th>Ispublished</th>
+            <td>{{ entity.isPublished }}</td>
+        </tr>
+        <tr>
+            <th>Viewcount</th>
+            <td>{{ entity.viewCount }}</td>
+        </tr>
+        <tr>
+            <th>Timestamp</th>
+            <td>{{ entity.timestamp|date('Y-m-d H:i:s') }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('event') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('event_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('event_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>

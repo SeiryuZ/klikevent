@@ -1,0 +1,30 @@
+category:
+    pattern:  /
+    defaults: { _controller: "KlikEventEventBundle:Category:index" }
+
+category_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "KlikEventEventBundle:Category:show" }
+
+category_new:
+    pattern:  /new
+    defaults: { _controller: "KlikEventEventBundle:Category:new" }
+
+category_create:
+    pattern:  /create
+    defaults: { _controller: "KlikEventEventBundle:Category:create" }
+    requirements: { _method: post }
+
+category_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "KlikEventEventBundle:Category:edit" }
+
+category_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "KlikEventEventBundle:Category:update" }
+    requirements: { _method: post }
+
+category_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "KlikEventEventBundle:Category:delete" }
+    requirements: { _method: post }

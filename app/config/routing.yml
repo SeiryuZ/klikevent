@@ -2,6 +2,14 @@ KlikEventEventBundle:
     resource: "@KlikEventEventBundle/Resources/config/routing.yml"
     prefix:   /
 
+KlikEventEventBundle_EventAdmin:
+    resource: "@KlikEventEventBundle/Resources/config/routing/event.yml"
+    prefix:   /admin/event
+
+KlikEventEventBundle_CategoryAdmin:
+    resource: "@KlikEventEventBundle/Resources/config/routing/category.yml"
+    prefix:   /admin/category
+
 # Internal routing configuration to handle ESI
 #_internal:
 #   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
