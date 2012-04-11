@@ -130,7 +130,7 @@ if ( !$smarty->isCached('events-date.tpl', $date) )
                             "category" => $category,
                             "count" => $row['count'],
                             "eventCoverImage" =>  $imgPath,
-                            "eventDate" => $date,
+                            "eventDate" => date('d F', strtotime($date)),
                          );
         
         $isFound = true;

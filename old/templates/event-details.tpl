@@ -18,8 +18,9 @@
         <div class="tabbable ">
             <ul class="nav nav-tabs">
                 <li class="active other "><a href="#overview" data-toggle="tab">Overview</a></li>
-                <!--<li class="map "><a href="#map" data-toggle="tab">Map</a></li>-->
+                
                 <li class="other "><a href="#images" data-toggle="tab">Gallery</a></li>
+                <li class="video "><a href="#video" data-toggle="tab">video</a></li>
             </ul>
         </div>
     </div>
@@ -114,6 +115,14 @@ function changeTab()
                 {foreach from=$details.gallery item=item name=gallery}
                 <img class="image"
                     src="{$item}" >
+                {/foreach}
+            </div>
+            <div class="tab-pane" id="video">
+                {if $details.video|@count lt 1}
+                <p>Tidak ada Video</p>
+                {/if}
+                {foreach from=$details.video item=item name=video}
+                    <iframe width="560" height="315" src="{$item}" frameborder="0" allowfullscreen></iframe>
                 {/foreach}
             </div>
         </div>

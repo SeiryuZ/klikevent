@@ -143,6 +143,7 @@ body{
 
 .image{
   max-width: 98%;
+  max-height: 500px;
 }
 .subscribe-input{ 
   width: 400px; 
