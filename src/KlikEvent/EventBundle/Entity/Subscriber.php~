@@ -16,7 +16,7 @@ class Subscriber
      * @ORM\GeneratedValue(strategy="AUTO")
      */
 
-    protected $event;
+    protected $id;
 
 
     /**
@@ -24,36 +24,23 @@ class Subscriber
      */    
     protected $email;
 
-
-
-
     /**
-     * Get event
+     * Set email
      *
-     * @return integer 
+     * @param string $email
      */
-    public function getEvent()
+    public function setEmail($email)
     {
-        return $this->event;
+        $this->email = $email;
     }
 
     /**
-     * Set end
-     *
-     * @param string $end
-     */
-    public function setEnd($end)
-    {
-        $this->end = $end;
-    }
-
-    /**
-     * Get end
+     * Get email
      *
      * @return string 
      */
-    public function getEnd()
+    public function getEmail()
     {
-        return $this->end;
+        return $this->email;
     }
 }

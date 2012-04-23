@@ -1,2 +1,47 @@
 {% extends '::base.html.twig' %}
 
+{% block title %}
+    KlikEvent :: Subscribe to Us!
+{% endblock %}
+
+{% block body %}
+<div class="hero-unit ">
+    <h1>Subscribe to Us!</h1>
+    <p>We will send you all goodness of KlikEvent directly to your email inbox.</p>
+
+
+
+<form action="{{ path('KlikEventEventBundle_Subscribe_page') }}" method="post" {{ form_enctype(form) }}>
+    
+    <div class="control-group">
+        <div class="controls">
+    {{ form_widget(form.email, {'attr' : {'class' : 'subscribe-input text-center', 'placeholder' : 'Your Email Here' } } ) }}
+    {{ form_errors (form.email)}}
+    {{ form_rest(form) }}
+        </div>
+    </div>
+    <br/><br/>
+    <button class="btn-large btn-primary text-center" onClick="">Subscribe</button>
+
+    {% if app.session.hasFlash('subscribe-notice-ok') %}
+    <div class="blogger-notice add-top alert-success">
+        <a class="close" data-dismiss="alert">x</a>
+        <h3 class="alert-heading">Sukses!</h3>
+        {{ app.session.flash('subscribe-notice-ok') }}
+    </div>
+    {% endif %}
+
+    {% if app.session.hasFlash('subscribe-notice-error') %}
+        <div class="blogger-notice add-top alert-error">
+            <a class="close" data-dismiss="alert">x</a>
+            <h3 class="alert-heading">Error!</h3>
+            {{ app.session.flash('subscribe-notice-error') }}<br/>
+        </div>
+    {% endif %}
+</form>
+
+
+
+
+</div>
+{% endblock %}

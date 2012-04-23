@@ -1,0 +1,7 @@
+# KlikEvent/EventBundle/Resources/config/validation.yml
+KlikEvent\EventBundle\Entity\Subscriber:
+    properties:
+        email:
+            - NotBlank: ~
+            - Email: ~
+

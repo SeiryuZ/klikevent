@@ -9,8 +9,8 @@
         {% endblock %}
         
         {% block stylesheets %}
-            <script type="text/javascript" src="{{asset ('bundles/klikeventevent/css/bootstrap.css') }}"></script>
-            <script type="text/javascript" src="{{asset ('bundles/klikeventevent/css/style.css') }}"></script>
+            <link type="text/css" rel="stylesheet" href="{{asset ('bundles/klikeventevent/css/bootstrap.css') }}">
+            <link type="text/css" rel="stylesheet" href="{{asset ('bundles/klikeventevent/css/style.css') }}">
         {% endblock %}
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
 
@@ -55,11 +55,13 @@
     </div><!-- /.navbar -->
 
     <div class="container main-container ">
+        
+        <div class="row add-min-height">
         {% block body %}{% endblock %}
 
         {% block javascripts_body %}{% endblock %}
 
-
+        </div>
         <hr/>
     <div class="row text-left">
         <div class="span3">

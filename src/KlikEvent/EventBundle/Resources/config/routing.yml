@@ -16,10 +16,13 @@ KlikEventEventBundle_Tips_page:
     pattern:  /tips
     defaults: { _controller: KlikEventEventBundle:Default:template, name: Tips }
 
+# SUBSCRIBE PATHS START
 KlikEventEventBundle_Subscribe_page:
     pattern:  /subscribe
-    defaults: { _controller: KlikEventEventBundle:Default:template, name: Subscribe }
+    defaults: { _controller: KlikEventEventBundle:Default:subscribe, name: Subscribe }
 
+
+#SUBSCRIBE PATHS END
 
 KlikEventEventBundle_EventsByCategory_page:
     pattern:  /event/category/{category}

@@ -16,46 +16,13 @@ class Subscriber
      * @ORM\GeneratedValue(strategy="AUTO")
      */
 
-    protected $event;
+    protected $id;
 
 
     /**
      * @ORM\Column(type="string",  length=255)
      */    
     protected $email;
-
-
-
-
-    /**
-     * Get event
-     *
-     * @return integer 
-     */
-    public function getEvent()
-    {
-        return $this->event;
-    }
-
-    /**
-     * Set end
-     *
-     * @param string $end
-     */
-    public function setEnd($end)
-    {
-        $this->end = $end;
-    }
-
-    /**
-     * Get end
-     *
-     * @return string 
-     */
-    public function getEnd()
-    {
-        return $this->end;
-    }
 
     /**
      * Set email
@@ -75,5 +42,15 @@ class Subscriber
     public function getEmail()
     {
         return $this->email;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 }
