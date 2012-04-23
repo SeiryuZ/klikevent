@@ -3,11 +3,107 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block javascripts_head %}
+            <script type="text/javascript" src="{{asset ('bundles/klikeventevent/js/jquery.js') }}"></script>
+            <script type="text/javascript" src="{{asset ('bundles/klikeventevent/js/bootstrap.js') }}"></script>
+        {% endblock %}
+        
+        {% block stylesheets %}
+            <script type="text/javascript" src="{{asset ('bundles/klikeventevent/css/bootstrap.css') }}"></script>
+            <script type="text/javascript" src="{{asset ('bundles/klikeventevent/css/style.css') }}"></script>
+        {% endblock %}
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+
+
     </head>
     <body>
+        <!-- NAVBAR ELEMENTS -->
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a class="brand" href="index.php">KlikEvent</a>
+                <span class="divider"></span>
+      
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        <li> <a href="#" id="nav">beta</a></li>
+                        <li class="add-border-left {if $index} active {/if}"><a href="hot-event.php" title="View the Hottest Event around!"><i class="icon-home icon-white "></i>Hot Event</a></li>
+                        <li class="add-border-left {if $todayEvent} active {/if}"><a href="todays-event.php" >Today's Event</a></li>
+                        <li class="add-border-left  {if $tips} active {/if}"><a id="nav" href="tips.php" title="Got information regarding events? Contact Us!" >Tips</a></li>
+                        <li class="add-border-left add-border-right {if $subscribe} active {/if}"><a id="nav" href="subscribe.php" title="Subscribe to Us!" >Subscribe</a></li>
+                    </ul>
+                    <ul class="nav pull-right">
+                        <li class="dropdown ">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Jakarta
+                                <b class=" caret caret-custom"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="active"><a href="#">Jakarta</a></li>
+                                <li><a href="#">Kota Lain</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!-- /.nav-collapse -->
+            </div><!-- /.container -->
+        </div><!-- /.navbar-inner -->
+    </div><!-- /.navbar -->
+
+    <div class="container main-container ">
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+
+        {% block javascripts_body %}{% endblock %}
+
+
+        <hr/>
+    <div class="row text-left">
+        <div class="span3">
+            <p><strong>Categories</strong><p>
+            <a href="filter.php?filter=paid"><p>Paid</p></a>
+            <a href="filter.php?filter=free"><p>Free</p></a>
+            <a href="filter.php?filter=day"><p>Day</p></a>
+            <a href="filter.php?filter=night"><p>Night</p></a>
+            <a href="filter.php?filter=artandhobby"><p>Art &amp; Hobbies</p></a>
+            <a href="filter.php?filter=exhibition"><p>Exhibition</p></a>
+            <a href="filter.php?filter=education"><p>Education</p></a>
+            <a href="filter.php?filter=others"><p>Others</p></a>
+        </div>
+        <div class="span3">
+            <p><strong>About</strong><p>
+            <a href="about.php"><p>About</p></a>
+            <a href="tips.php"><p>Contact Us</p></a>
+            <p>Terms and Condition</p>
+        </div>
+        <div class="span3">
+            <p><strong>Newsletter</strong><p>
+                <form method="POST" action="process-subscribe.php">
+                <p><input type="text" name="email" placeholder="Your Email here" class=""></p>
+                <p><a class="btn-small btn-primary">Subscribe</a></p>
+                </form>
+        </div>
+        <div class="span3 ">
+            <p><strong>Follow Us!</strong><p>
+            <p class="">
+                <a href="https://twitter.com/KlikeventID" class="twitter-follow-button" data-show-count="true" data-size="large">Follow @KlikEventID</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+                </script>
+            </p>
+
+            <p class="">
+                <div class="fb-like" data-href="http://www.facebook.com/KlikEvent" data-send="true" data-width="220" data-show-faces="false"></div>
+            </p>
+        </div>
+    </div>
+    <hr/>
+    <div class="section partners">
+        <strong>Partners</strong>
+    </div>
+
+    </div>
     </body>
 </html>

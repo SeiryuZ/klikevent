@@ -94,4 +94,14 @@ class Time
     {
         return $this->event;
     }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }
