@@ -51,19 +51,12 @@ class Event
      */
     protected $eventCategories;
 
-    public function __construct() {
-        $this->eventCategories = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
-     * @ORM\Column(type="datetime")
-     */
-    protected $eventDateTimeBegin;
+    * @ORM\OneToMany(targetEntity="Time", mappedBy="event")
+    */
+    protected $eventTimes;
 
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    protected $eventDateTimeEnd;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -100,6 +93,12 @@ class Event
      */
     protected $timestamp;
 
+
+    public function __construct() {
+        $this->eventCategories = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->eventTimes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
 
     /**
      * Get id
@@ -429,5 +428,25 @@ class Event
     public function getEventVideos()
     {
         return $this->eventVideos;
+    }
+
+    /**
+     * Add eventTimes
+     *
+     * @param KlikEvent\EventBundle\Entity\Time $eventTimes
+     */
+    public function addTime(\KlikEvent\EventBundle\Entity\Time $eventTimes)
+    {
+        $this->eventTimes[] = $eventTimes;
+    }
+
+    /**
+     * Get eventTimes
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getEventTimes()
+    {
+        return $this->eventTimes;
     }
 }

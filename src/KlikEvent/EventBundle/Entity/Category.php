@@ -28,6 +28,11 @@ class Category
     protected $categoryDescription;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */    
+    protected $categoryImage;
+
+    /**
      * @ORM\ManyToMany(targetEntity="Event", mappedBy="eventCategories")
      */
     protected $events;
@@ -110,5 +115,25 @@ class Category
     public function __toString()
     {
         return $this->categoryName;
+    }
+
+    /**
+     * Set categoryImage
+     *
+     * @param string $categoryImage
+     */
+    public function setCategoryImage($categoryImage)
+    {
+        $this->categoryImage = $categoryImage;
+    }
+
+    /**
+     * Get categoryImage
+     *
+     * @return string 
+     */
+    public function getCategoryImage()
+    {
+        return $this->categoryImage;
     }
 }
