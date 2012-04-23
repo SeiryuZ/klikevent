@@ -1,3 +1,49 @@
 KlikEventEventBundle_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: KlikEventEventBundle:Default:index }
+    pattern:  /
+    defaults: { _controller: KlikEventEventBundle:Default:index, name: Index }
+
+
+KlikEventEventBundle_HotEvent_page:
+    pattern:  /hot
+    defaults: { _controller: KlikEventEventBundle:Default:template, name: Hot }
+
+
+KlikEventEventBundle_TodayEvent_page:
+    pattern:  /today
+    defaults: { _controller: KlikEventEventBundle:Default:template, name: Today }
+
+KlikEventEventBundle_Tips_page:
+    pattern:  /tips
+    defaults: { _controller: KlikEventEventBundle:Default:template, name: Tips }
+
+KlikEventEventBundle_Subscribe_page:
+    pattern:  /subscribe
+    defaults: { _controller: KlikEventEventBundle:Default:template, name: Subscribe }
+
+
+KlikEventEventBundle_EventsByCategory_page:
+    pattern:  /event/category/{category}
+    defaults: { _controller: KlikEventEventBundle:Default:template, name: EventsByCategory }
+    requirements:
+        month: "[a-zA-Z]+"
+
+KlikEventEventBundle_eventsByDate_page:
+    pattern:  /event/{date}/{month}/{year}
+    defaults: { _controller: KlikEventEventBundle:Default:template, name: EventsByDate }
+    requirements:
+        date:  "[0-9]{1,2}"
+        month: "[a-zA-Z]+"
+        year:  "[0-9]{4}"
+
+KlikEventEventBundle_eventsByMonth_page:
+    pattern:  /event/{month}/{year}
+    defaults: { _controller: KlikEventEventBundle:Default:template, name: EventsByMonth }
+    requirements:
+        month: "[a-zA-Z]+"
+        year:  "[0-9]{4}"
+
+KlikEventEventBundle_eventsByYear_page:
+    pattern:  /event/{year}
+    defaults: { _controller: KlikEventEventBundle:Default:template, name: EventsByYear }
+    requirements:
+        year:  "[0-9]{4}" 
