@@ -236,46 +236,7 @@ class Event
         return $this->eventFurtherDescription;
     }
 
-    /**
-     * Set eventDateTimeBegin
-     *
-     * @param datetime $eventDateTimeBegin
-     */
-    public function setEventDateTimeBegin($eventDateTimeBegin)
-    {
-        $this->eventDateTimeBegin = $eventDateTimeBegin;
-    }
-
-    /**
-     * Get eventDateTimeBegin
-     *
-     * @return datetime 
-     */
-    public function getEventDateTimeBegin()
-    {
-        return $this->eventDateTimeBegin;
-    }
-
-    /**
-     * Set eventDateTimeEnd
-     *
-     * @param datetime $eventDateTimeEnd
-     */
-    public function setEventDateTimeEnd($eventDateTimeEnd)
-    {
-        $this->eventDateTimeEnd = $eventDateTimeEnd;
-    }
-
-    /**
-     * Get eventDateTimeEnd
-     *
-     * @return datetime 
-     */
-    public function getEventDateTimeEnd()
-    {
-        return $this->eventDateTimeEnd;
-    }
-
+   
     /**
      * Set eventCoverImage
      *

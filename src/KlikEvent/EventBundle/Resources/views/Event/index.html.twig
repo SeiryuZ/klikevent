@@ -10,8 +10,6 @@
             <th>Eventshortdescription</th>
             <th>Eventdescription</th>
             <th>Eventfurtherdescription</th>
-            <th>Eventdatetimebegin</th>
-            <th>Eventdatetimeend</th>
             <th>Eventcoverimage</th>
             <th>Eventimages</th>
             <th>Eventvideos</th>
@@ -32,8 +30,6 @@
             <td>{{ entity.eventShortDescription }}</td>
             <td>{{ entity.eventDescription }}</td>
             <td>{{ entity.eventFurtherDescription }}</td>
-            <td>{% if entity.eventDateTimeBegin %}{{ entity.eventDateTimeBegin|date('Y-m-d H:i:s') }}{% endif%}</td>
-            <td>{% if entity.eventDateTimeEnd %}{{ entity.eventDateTimeEnd|date('Y-m-d H:i:s') }}{% endif%}</td>
             <td>{{ entity.eventCoverImage }}</td>
             <td>{{ entity.eventImages }}</td>
             <td>{{ entity.eventVideos }}</td>

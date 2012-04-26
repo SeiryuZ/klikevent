@@ -11,10 +11,12 @@ use KlikEvent\EventBundle\Entity\Subscriber;
 use KlikEvent\EventBundle\Entity\Event;
 use KlikEvent\EventBundle\Entity\Category;
 use KlikEvent\EventBundle\Entity\Feedback;
+use KlikEvent\EventBundle\Entity\Time;
 
 use KlikEvent\EventBundle\Form\SubscribeType;
 use KlikEvent\EventBundle\Form\FeedbackType;
 use KlikEvent\EventBundle\Form\EventType;
+use KlikEvent\EventBundle\Form\TimeType;
 
 class DefaultController extends Controller
 {

@@ -6,14 +6,14 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
 
 use KlikEvent\EventBundle\Form\FeedbackType;
-use KlikEvent\EventBundle\Form\CategoryType;
+use KlikEvent\EventBundle\Form\TimeType;
 
 class EventType extends AbstractType
 {
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder
-            ->add('feedback' , new FeedbackType() )
+            ->add('feedback', new FeedbackType())
             ->add('eventTitle')
             ->add('eventLocation1')
             ->add('eventLocation2')
@@ -23,9 +23,15 @@ class EventType extends AbstractType
             ->add('eventCoverImage')
             ->add('eventImages')
             ->add('eventVideos')
-            ->add('eventCategories', new CategoryType())
+            ->add('eventCategories')
+            ->add('eventTimes', 'collection', 
+                array ('type' => new TimeType(), 
+                    'allow_add' => true,
+                    'prototype' => true,
+                    'by_reference' => false
+                    ))
 
-
+            
         ;
     }
 

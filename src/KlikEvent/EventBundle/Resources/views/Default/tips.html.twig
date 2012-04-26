@@ -81,6 +81,8 @@
                 <h1> Tips - Pemilik Event </h1>
                 <form action="{{ path('KlikEventEventBundle_Feedback_page') }}" method="post" class="form-horizontal" {{ form_enctype(form_event_owner) }}>
                     {{form_widget(form_event_owner)}}
+
+                    <a href="#" class="addTime">addTime</a>
                 </form>
             </div>
 
@@ -123,4 +125,26 @@
     </div>
 </div>
 
+{% endblock %}
+
+
+{% block javascripts_body %}
+
+<script type="text/javascript">
+    
+    function addTime()
+    {
+        var collectionHolder = $('#klikevent_eventbundle_eventtype_eventTimes');
+        var prototype = collectionHolder.attr('data-prototype');
+        form = prototype.replace(/\$\$name\$\$/g, collectionHolder.children().length );
+        collectionHolder.append(form);
+
+    }
+
+    $('a.addTime').live ('click', function (event ) { 
+        event.preventDefault();
+        addTime();
+
+    } );
+</script>
 {% endblock %}
