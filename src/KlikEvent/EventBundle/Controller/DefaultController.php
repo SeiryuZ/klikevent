@@ -56,8 +56,11 @@ class DefaultController extends Controller
         if ( $date != 0 && $month != 0 && $year != 0 )
             $today = date( 'Y-m-d', strtotime( $year."-".$month."-".$date ) );
 
-        //$next = $this->addIntervalToDate( $today ,"Y-m-d", 1);
-        //$prev = $this->addIntervalToDate( $today ,"Y-m-d", -1);
+
+        //get the unix representation of time for next and prev date
+        $next = strtotime ( $this->addIntervalToDate( $today ,"Y-m-d", 1) );
+        $prev = strtotime ( $this->addIntervalToDate( $today ,"Y-m-d", -1) );
+
 
         $repository = $this->getDoctrine()->getRepository('KlikEventEventBundle:Event');
         $qb = $repository->createQueryBuilder('e');
@@ -74,13 +77,15 @@ class DefaultController extends Controller
                 'events' => $events, 
                 'pageTitle'=>'Events ', 
                 'date'=> $today,
-                'nextDate'=> $this->addIntervalToDate( $today ,"d", 1),
-                'nextMonth'=> $this->addIntervalToDate( $today ,"m", 1),
-                'nextYear'=> $this->addIntervalToDate( $today ,"Y", 1),
-                'prevDate'=>$this->addIntervalToDate( $today ,"d", -1),
-                'prevMonth'=>$this->addIntervalToDate( $today ,"m", -1),
-                'prevYear'=>$this->addIntervalToDate( $today ,"Y", -1)
+                'nextDate'=> date('d', $next),
+                'nextMonth'=> date('m', $next),
+                'nextYear'=>date('Y', $next),
+                'prevDate'=>date('d', $prev),
+                'prevMonth'=>date('m', $prev),
+                'prevYear'=>date('Y', $prev)
                 ));
+
+      
     }
 /***Today START***/
 
