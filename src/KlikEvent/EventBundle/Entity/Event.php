@@ -26,7 +26,7 @@ class Event
     protected $eventLocation1;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $eventLocation2;
 
@@ -41,7 +41,7 @@ class Event
     protected $eventDescription;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     protected $eventFurtherDescription;
 
@@ -64,12 +64,12 @@ class Event
     protected $eventCoverImage;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     protected $eventImages;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     protected $eventVideos;
 
@@ -92,6 +92,12 @@ class Event
      * @ORM\Column(type="datetime")
      */
     protected $timestamp;
+
+    /**
+    * @ORM\OneToOne (targetEntity="Feedback")
+    *
+    */
+    protected $feedback;
 
 
     public function __construct() {
@@ -448,5 +454,25 @@ class Event
     public function getEventTimes()
     {
         return $this->eventTimes;
+    }
+
+    /**
+     * Set feedback
+     *
+     * @param KlikEvent\EventBundle\Entity\Feedback $feedback
+     */
+    public function setFeedback(\KlikEvent\EventBundle\Entity\Feedback $feedback)
+    {
+        $this->feedback = $feedback;
+    }
+
+    /**
+     * Get feedback
+     *
+     * @return KlikEvent\EventBundle\Entity\Feedback 
+     */
+    public function getFeedback()
+    {
+        return $this->feedback;
     }
 }

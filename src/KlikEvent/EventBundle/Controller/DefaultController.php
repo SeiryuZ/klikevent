@@ -42,13 +42,9 @@ class DefaultController extends Controller
 
 
 /***Today START***/
-
-//TODO Optimization of getting next and previous dates
 //TODO checking if given date and month is incorrect
     public function showEventByDateAction( Request $request,  $date = 0 , $month = 0 , $year = 0 )
     {
-
-
 
         $today = date ('Y-m-d ');
 
@@ -130,6 +126,9 @@ class DefaultController extends Controller
 
 
 
+
+
+/* Utility Functions */
     private function addIntervalToDate ($d ="", $format="Y-m-d", $interval )
     {
         if ($d =="") 
