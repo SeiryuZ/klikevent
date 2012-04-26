@@ -6,6 +6,14 @@
         {% block javascripts_head %}
             <script type="text/javascript" src="{{asset ('bundles/klikeventevent/js/jquery.js') }}"></script>
             <script type="text/javascript" src="{{asset ('bundles/klikeventevent/js/bootstrap.js') }}"></script>
+            <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+            <script type="text/javascript">
+            stLight.options(
+                {
+                    {publisher: "ur-e8a0fa02-cfcb-5919-d547-808797cc699"}
+                }
+                );
+            </script>
         {% endblock %}
         
         {% block stylesheets %}
@@ -26,16 +34,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
-                <a class="brand" href="index.php">KlikEvent</a>
+                <a class="brand" href="{{path ('KlikEventEventBundle_homepage')}}">KlikEvent</a>
                 <span class="divider"></span>
       
                 <div class="nav-collapse">
                     <ul class="nav">
-                        <li> <a href="#" id="nav">beta</a></li>
-                        <li class="add-border-left {if $index} active {/if}"><a href="hot-event.php" title="View the Hottest Event around!"><i class="icon-home icon-white "></i>Hot Event</a></li>
-                        <li class="add-border-left {if $todayEvent} active {/if}"><a href="todays-event.php" >Today's Event</a></li>
-                        <li class="add-border-left  {if $tips} active {/if}"><a id="nav" href="tips.php" title="Got information regarding events? Contact Us!" >Tips</a></li>
-                        <li class="add-border-left add-border-right {if $subscribe} active {/if}"><a id="nav" href="subscribe.php" title="Subscribe to Us!" >Subscribe</a></li>
+                        <li> <a href="{{path ('KlikEventEventBundle_homepage')}}" id="nav">beta</a></li>
+                        <li class="add-border-left {if $index} active {/if}"><a href="{{path ('KlikEventEventBundle_HotEvent_page')}}" title="View the Hottest Event around!"><i class="icon-home icon-white "></i>Hot Event</a></li>
+                        <li class="add-border-left {if $todayEvent} active {/if}"><a href="{{path ('KlikEventEventBundle_TodayEvent_page')}}" >Today's Event</a></li>
+                        <li class="add-border-left  {if $tips} active {/if}"><a id="nav" href="{{path ('KlikEventEventBundle_Tips_page')}}" title="Got information regarding events? Contact Us!" >Tips</a></li>
+                        <li class="add-border-left add-border-right {if $subscribe} active {/if}"><a id="nav" href="{{path ('KlikEventEventBundle_Subscribe_page')}}" title="Subscribe to Us!" >Subscribe</a></li>
                     </ul>
                     <ul class="nav pull-right">
                         <li class="dropdown ">
@@ -55,7 +63,7 @@
     </div><!-- /.navbar -->
 
     <div class="container main-container ">
-        
+
         <div class="row add-min-height">
         {% block body %}{% endblock %}
 

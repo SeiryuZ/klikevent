@@ -5,12 +5,12 @@ KlikEventEventBundle_homepage:
 
 KlikEventEventBundle_HotEvent_page:
     pattern:  /hot
-    defaults: { _controller: KlikEventEventBundle:Default:template, name: Hot }
+    defaults: { _controller: KlikEventEventBundle:Default:showHot }
 
 
 KlikEventEventBundle_TodayEvent_page:
     pattern:  /today
-    defaults: { _controller: KlikEventEventBundle:Default:template, name: Today }
+    defaults: { _controller: KlikEventEventBundle:Default:showEventByDate, name: Today }
 
 KlikEventEventBundle_Tips_page:
     pattern:  /tips
@@ -20,8 +20,6 @@ KlikEventEventBundle_Tips_page:
 KlikEventEventBundle_Subscribe_page:
     pattern:  /subscribe
     defaults: { _controller: KlikEventEventBundle:Default:subscribe, name: Subscribe }
-
-
 #SUBSCRIBE PATHS END
 
 KlikEventEventBundle_EventsByCategory_page:
@@ -32,17 +30,17 @@ KlikEventEventBundle_EventsByCategory_page:
 
 KlikEventEventBundle_eventsByDate_page:
     pattern:  /event/{date}/{month}/{year}
-    defaults: { _controller: KlikEventEventBundle:Default:template, name: EventsByDate }
+    defaults: { _controller: KlikEventEventBundle:Default:showEventByDate, name: EventsByDate }
     requirements:
         date:  "[0-9]{1,2}"
-        month: "[a-zA-Z]+"
+        month: "[0-9]{1,2}"
         year:  "[0-9]{4}"
 
 KlikEventEventBundle_eventsByMonth_page:
     pattern:  /event/{month}/{year}
     defaults: { _controller: KlikEventEventBundle:Default:template, name: EventsByMonth }
     requirements:
-        month: "[a-zA-Z]+"
+        month: "[0-9]{1,2}"
         year:  "[0-9]{4}"
 
 KlikEventEventBundle_eventsByYear_page:
@@ -50,3 +48,9 @@ KlikEventEventBundle_eventsByYear_page:
     defaults: { _controller: KlikEventEventBundle:Default:template, name: EventsByYear }
     requirements:
         year:  "[0-9]{4}" 
+
+KlikEventEventBundle_eventDetails_page:
+    pattern:  /event/id/{id}
+    defaults: { _controller: KlikEventEventBundle:Default:template, name: EventsDetailsID }
+    requirements:
+        id:  "[0-9]+" 

@@ -1,0 +1,74 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+    KlikEvent :: {{pageTitle}}
+{% endblock %}
+
+{% block body %}
+
+
+<div class="section page-header">
+    <h1> Events Pada Tanggal {{date | date('d-m-Y')}} </h1>
+    <div class="row">
+        <div class="span2">
+           <a href="{{path ('KlikEventEventBundle_eventsByDate_page', {'date' : prevDate,  'month': prevMonth , 'year':prevYear} ) }}"><i class="icon-chevron-left"></i>Previous Date</a>
+        </div>
+        <div class="span2 offset8">
+            <a href="{{path ('KlikEventEventBundle_eventsByDate_page', {'date' : nextDate,  'month': nextMonth , 'year':nextYear})}}">Next Date<i class="icon-chevron-right"></i></a>
+        </div>
+    </div>
+</div>
+ 
+
+
+
+    {% for event in events %}
+        <div class="row">
+            <div class="span12">
+                <span class="page-header">
+                    <a href="{{path ('KlikEventEventBundle_eventDetails_page', { 'id' : event.id })}}" class="no-style-link">
+                        <h1 class=" add-bottom ">{{event.eventTitle}}</h1>
+                    </a>
+
+                     {% for category in event.eventCategories %}
+                        {{category.categoryName}}
+                     {% endfor %}
+                </span>
+
+                <div class="row">
+                    <div class="span6">
+                        {{event.eventCoverImage}}
+                    </div>
+                    <div class="span6">
+                        <div class="row">
+                        <h3 class="description">
+                        {% for time in event.eventTimes %}
+
+                        {{time.begin | date('d-m-Y')}} - {{time.end | date('d-m-Y')}}
+
+                        {% endfor %}
+                            <br/>
+                        {{event.eventShortDescription}}
+                        </h3>
+                        </div>
+                        <div class="row text-center add-top">
+                            <div class="span6" style="">
+                                <span class='st_facebook_hcount' st_url="http://www.klikevent.com/event/id/{{event.id}}" st_title="{{event.eventTitle}}" displayText='Facebook'></span>
+                                <span class='st_twitter_hcount' st_url="http://www.klikevent.com/event/id/{{event.id}}" st_title="{{event.eventTitle}} via @KlikEventID #KlikEvent" displayText='Tweet'></span>
+                                <span class='st_pinterest_hcount' st_url="http://www.klikevent.com/event/id/{{event.id}}" st_title="{{event.eventTitle}}" displayText='Pinterest'></span>
+                            </div>
+                        </div>
+                        <div class="row add-top">
+                            <div class="span6  text-right">
+                                <a href="{{path ('KlikEventEventBundle_eventDetails_page', { 'id' : event.id })}}">
+                                <button class="btn btn-xxlarge btn-primary">See Details</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+    {% else %}
+        No Hot Events
+    {% endfor %}
+
+{% endblock %}
