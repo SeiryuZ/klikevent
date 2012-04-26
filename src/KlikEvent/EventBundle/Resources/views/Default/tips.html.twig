@@ -1,0 +1,126 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+    KlikEvent :: Tips &amp; Feedback!
+{% endblock %}
+
+{% block body %}
+
+
+<div class="row text-center">
+    <div class="span12 ">
+        <div class="tabbable ">
+            <ul class="nav nav-tabs">
+                <li class="{% if tips_anon is defined %}active {% endif %} "><a href="#umum" data-toggle="tab">Umum</a></li>
+                <li class="{% if tips_event_owner is defined %} active {% endif %} "><a href="#pemilik-event" data-toggle="tab">Pemilik Event</a></li>
+                <li class="{% if feedback is defined %} active {% endif %} "><a href="#feedback" data-toggle="tab">Feedback</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="row add-min-height add-bottom text-center">
+    <div class="row">
+        <div class="tab-content span6 offset3">
+            <div class="section ">
+                
+                {% if app.session.hasFlash('notice-ok') %}
+                <div class="blogger-notice add-top add-bottom alert-success">
+                    <a class="close" data-dismiss="alert">x</a>
+                    <h3 class="alert-heading">Sukses!</h3>
+                    {{ app.session.flash('notice-ok') }}
+                </div>
+                {% endif %}
+
+                {% if app.session.hasFlash('notice-error') %}
+                    <div class="blogger-notice add-top alert-error">
+                        <a class="close" data-dismiss="alert">x</a>
+                        <h3 class="alert-heading">Error!</h3>
+                        {{ app.session.flash('notice-error') }}<br/>
+                    </div>
+                {% endif %}
+            </div>
+            <!-- TAB FOR umum -->
+            <div class="tab-pane {% if tips_anon is defined %}active {% endif %}" id="umum">
+                <h1> Tips - Umum </h1>
+                <form action="{{ path('KlikEventEventBundle_Tips_page') }}" method="post" class="form-horizontal" {{ form_enctype(form_event_anon) }}>
+                    {{ form_errors( form_event_anon )}}
+
+                    <legend>Ada info tentang event? Berikan kami tips!</legend>
+    
+              
+                    <div class="control-group">
+                        {{form_label(form_event_anon.fromName, 'Nama' , { 'attr' : {'class':'control-label error' } } ) }}
+                        <div class="controls">
+                            {{form_widget(form_event_anon.fromName , { 'attr' : {'class':'input-xlarge' } })}}
+                            {{form_errors(form_event_anon.fromName)}}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        {{form_label(form_event_anon.fromEmail, 'Email' , { 'attr' : {'class':'control-label error' } } ) }}
+                        <div class="controls">
+                            {{form_widget(form_event_anon.fromEmail , { 'attr' : {'class':'input-xlarge' } })}}
+                            {{form_errors(form_event_anon.fromEmail)}}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        {{form_label(form_event_anon.content, 'Tips' , { 'attr' : {'class':'control-label error' } } ) }}
+                        <div class="controls">
+                            {{form_widget(form_event_anon.content , { 'attr' : {'class':'input-xlarge', 'rows' : 10 } })}}
+                            {{form_errors(form_event_anon.content)}}
+                        </div>
+                    </div>
+
+                    {{form_rest (form_event_anon)}}
+                    <button class="btn-large btn-primary" >Submit</button>
+                    
+                </form>
+            </div>
+
+            <div class="tab-pane {% if tips_event_owner is defined %} active {% endif %}" id="pemilik-event">
+                <h1> Tips - Pemilik Event </h1>
+                <form action="{{ path('KlikEventEventBundle_Feedback_page') }}" method="post" class="form-horizontal" {{ form_enctype(form_event_owner) }}>
+                    {{form_widget(form_event_owner)}}
+                </form>
+            </div>
+
+            <div class="tab-pane {% if feedback is defined %} active {% endif %}" id="feedback">
+                <h1> Feedback </h1>
+                <form action="{{ path('KlikEventEventBundle_Feedback_page') }}" method="post" class="form-horizontal" {{ form_enctype(form_web) }}>
+                {{ form_errors( form_web )}}
+
+                    <legend>Website kami bermasalah? Ada masukan? Berikan kami feedback!</legend>
+
+          
+                    <div class="control-group">
+                    {{form_label(form_web.fromName, 'Nama' , { 'attr' : {'class':'control-label error' } } ) }}
+                        <div class="controls">
+                        {{form_widget(form_web.fromName , { 'attr' : {'class':'input-xlarge' } })}}
+                        {{form_errors(form_web.fromName)}}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                    {{form_label(form_web.fromEmail, 'Email' , { 'attr' : {'class':'control-label error' } } ) }}
+                        <div class="controls">
+                        {{form_widget(form_web.fromEmail , { 'attr' : {'class':'input-xlarge' } })}}
+                        {{form_errors(form_web.fromEmail)}}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                    {{form_label(form_web.content, 'Feedback' , { 'attr' : {'class':'control-label error' } } ) }}
+                        <div class="controls">
+                        {{form_widget(form_web.content , { 'attr' : {'class':'input-xlarge', 'rows' : 10 } })}}
+                        {{form_errors(form_web.content)}}
+                        </div>
+                    </div>
+
+                    {{form_rest (form_web)}}
+                    <button class="btn-large btn-primary" >Submit</button>
+                
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

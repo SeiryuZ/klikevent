@@ -10,8 +10,11 @@ use Doctrine\ORM\Query\ResultSetMapping;
 use KlikEvent\EventBundle\Entity\Subscriber;
 use KlikEvent\EventBundle\Entity\Event;
 use KlikEvent\EventBundle\Entity\Category;
+use KlikEvent\EventBundle\Entity\Feedback;
 
 use KlikEvent\EventBundle\Form\SubscribeType;
+use KlikEvent\EventBundle\Form\FeedbackType;
+use KlikEvent\EventBundle\Form\EventType;
 
 class DefaultController extends Controller
 {
@@ -103,7 +106,7 @@ class DefaultController extends Controller
                 $em->persist($subscriber);
                 $em->flush();
 
-                $this->get('session')->setFlash('subscribe-notice-ok', 'Email anda sudah dimasukan ke database kami. Terima Kasih');
+                $this->get('session')->setFlash('notice-ok', 'Email anda sudah dimasukan ke database kami. Terima Kasih');
 
                 $subscriber = new Subscriber();
 
@@ -113,7 +116,7 @@ class DefaultController extends Controller
             }
             else
             {
-                $this->get('session')->setFlash('subscribe-notice-error', 'Email anda tidak valid. Coba sekali lagi');
+                $this->get('session')->setFlash('notice-error', 'Email anda tidak valid. Coba sekali lagi');
 
 
                 return $this->render ('KlikEventEventBundle:Default:subscribe.html.twig', array('form' => $form->createView()) );
@@ -124,6 +127,148 @@ class DefaultController extends Controller
 
 /***SUBSCRIBE END***/
 
+/***tips START***/
+    public function defaultFeedbackAction( Request $request )
+    {
+        $feedback_web = new Feedback();
+        $feedback_event_anon = new Feedback();
+        $feedback_event_owner = new Event();
+
+        $form_web = $this->createForm(new FeedbackType(), $feedback_web);
+        $form_event_anon = $this->createForm(new FeedbackType(), $feedback_event_anon);
+        $form_event_owner = $this->createForm(new EventType(), $feedback_event_owner);
+
+
+        if ($request->getMethod() == 'POST') {
+            
+            $form_web->bindRequest($request);
+
+            if ($form_web->isValid()) {
+
+                $em = $this->getDoctrine()->getEntityManager();
+                $em->persist($feedback_web);
+                $em->flush();
+                
+                $this->get('session')->setFlash('notice-ok', 'Terima kasih untuk feedback');
+
+                $feedback_web = new Feedback();
+                $form_web = $this->createForm(new FeedbackType(), $feedback_web);
+        
+                return $this->render ('KlikEventEventBundle:Default:tips.html.twig', 
+                array(
+                    'form_web' => $form_web->createView(),
+                    'form_event_anon' => $form_event_anon->createView(),
+                    'form_event_owner' => $form_event_owner->createView(),
+                    'feedback' => true
+                    ) 
+
+                );
+            }
+            else
+            {
+                $this->get('session')->setFlash('notice-error', 'Maaf, Ada error. Coba lagi');
+                return $this->render ('KlikEventEventBundle:Default:tips.html.twig', 
+                array(
+                    'form_web' => $form_web->createView(),
+                    'form_event_anon' => $form_event_anon->createView(),
+                    'form_event_owner' => $form_event_owner->createView(),
+                    'feedback' => true
+                    ) 
+
+            );
+            }
+
+        }
+        return $this->render ('KlikEventEventBundle:Default:tips.html.twig', 
+        array(
+            'form_web' => $form_web->createView(),
+            'form_event_anon' => $form_event_anon->createView(),
+            'form_event_owner' => $form_event_owner->createView(),
+            'feedback' => true
+            ) 
+        );
+    }
+
+    public function defaultTipsAction( Request $request )
+    {
+        $feedback_web = new Feedback();
+        $feedback_event_anon = new Feedback();
+        $feedback_event_owner = new Event();
+
+        $form_web = $this->createForm(new FeedbackType(), $feedback_web);
+        $form_event_anon = $this->createForm(new FeedbackType(), $feedback_event_anon);
+        $form_event_owner = $this->createForm(new EventType(), $feedback_event_owner);
+
+
+
+        if ($request->getMethod() == 'POST') {
+            
+            $form_event_anon->bindRequest($request);
+
+            if ($form_event_anon->isValid()) {
+
+                $em = $this->getDoctrine()->getEntityManager();
+                $em->persist($feedback_event_anon);
+                $em->flush();
+
+                $this->get('session')->setFlash('tips-notice-ok', 'Terima kasih untuk tips');
+
+                $feedback_event_anon = new Feedback();
+                $form_event_anon = $this->createForm(new FeedbackType(), $feedback_web);
+        
+                return $this->render ('KlikEventEventBundle:Default:tips.html.twig', 
+                array(
+                    'form_web' => $form_web->createView(),
+                    'form_event_anon' => $form_event_anon->createView(),
+                    'form_event_owner' => $form_event_owner->createView(),
+                    'tips_anon' => true
+                    ) 
+
+                );
+            }
+            else
+            {
+                $this->get('session')->setFlash('tips-notice-error', 'Maaf, Ada error. Coba lagi');
+                return $this->render ('KlikEventEventBundle:Default:tips.html.twig', 
+                array(
+                    'form_web' => $form_web->createView(),
+                    'form_event_anon' => $form_event_anon->createView(),
+                    'form_event_owner' => $form_event_owner->createView(),
+                    'tips_anon' => true
+                    ) 
+
+            );
+            }
+
+        }
+        return $this->render ('KlikEventEventBundle:Default:tips.html.twig', 
+        array(
+            'form_web' => $form_web->createView(),
+            'form_event_anon' => $form_event_anon->createView(),
+            'form_event_owner' => $form_event_owner->createView(),
+            'tips_anon' => true
+            )
+        ); 
+
+
+    }
+
+    // public function defaultTipsEventOwnerAction( Request $request )
+    // {
+    //     $feedback_event_owner = new Event();
+
+    //     $form_event_owner = $this->createForm(new FeedbackType(), $feedback_event_owner);
+
+    //     return $this->render ('KlikEventEventBundle:Default:tips.html.twig', 
+    //     array(
+    //         'form_web' => $form_web->createView(),
+    //         'form_event_owner' => $form_event_owner->createView(),
+    //         'tips_anon' => true
+    //         )
+    //     );    
+    // }
+
+/***tips END***/
 
 
 

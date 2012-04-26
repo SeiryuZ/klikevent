@@ -14,13 +14,17 @@ KlikEventEventBundle_TodayEvent_page:
 
 KlikEventEventBundle_Tips_page:
     pattern:  /tips
-    defaults: { _controller: KlikEventEventBundle:Default:template, name: Tips }
+    defaults: { _controller: KlikEventEventBundle:Default:defaultTips, name: Tips }
 
-# SUBSCRIBE PATHS START
+KlikEventEventBundle_Feedback_page:
+    pattern:  /feedback
+    defaults: { _controller: KlikEventEventBundle:Default:defaultFeedback, name: Tips }
+
+
 KlikEventEventBundle_Subscribe_page:
     pattern:  /subscribe
     defaults: { _controller: KlikEventEventBundle:Default:subscribe }
-#SUBSCRIBE PATHS END
+
 
 KlikEventEventBundle_EventsByCategory_page:
     pattern:  /event/category/{category}
@@ -36,18 +40,18 @@ KlikEventEventBundle_eventsByDate_page:
         month: "[0-9]{1,2}"
         year:  "[0-9]{4}"
 
-KlikEventEventBundle_eventsByMonth_page:
-    pattern:  /event/{month}/{year}
-    defaults: { _controller: KlikEventEventBundle:Default:template, name: EventsByMonth }
-    requirements:
-        month: "[0-9]{1,2}"
-        year:  "[0-9]{4}"
+# KlikEventEventBundle_eventsByMonth_page:
+#     pattern:  /event/{month}/{year}
+#     defaults: { _controller: KlikEventEventBundle:Default:template, name: EventsByMonth }
+#     requirements:
+#         month: "[0-9]{1,2}"
+#         year:  "[0-9]{4}"
 
-KlikEventEventBundle_eventsByYear_page:
-    pattern:  /event/{year}
-    defaults: { _controller: KlikEventEventBundle:Default:template, name: EventsByYear }
-    requirements:
-        year:  "[0-9]{4}" 
+# KlikEventEventBundle_eventsByYear_page:
+#     pattern:  /event/{year}
+#     defaults: { _controller: KlikEventEventBundle:Default:template, name: EventsByYear }
+#     requirements:
+#         year:  "[0-9]{4}" 
 
 KlikEventEventBundle_eventDetails_page:
     pattern:  /event/id/{id}

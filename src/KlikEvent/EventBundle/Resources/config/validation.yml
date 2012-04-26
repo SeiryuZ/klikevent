@@ -5,3 +5,10 @@ KlikEvent\EventBundle\Entity\Subscriber:
             - NotBlank: ~
             - Email: ~
 
+KlikEvent\EventBundle\Entity\Feedback:
+    properties:
+        content:
+            - NotBlank: ~
+        fromEmail:
+            - Email: ~
+

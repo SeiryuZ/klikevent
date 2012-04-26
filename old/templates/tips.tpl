@@ -2,8 +2,6 @@
 
 <div class="section ">
     <h1> Tips </h1>
-    <div class="row">
-    </div>
 </div>
 
 <div class="row text-center">
