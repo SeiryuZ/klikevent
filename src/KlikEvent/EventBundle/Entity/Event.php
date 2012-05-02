@@ -53,7 +53,7 @@ class Event
 
 
     /**
-    * @ORM\OneToMany(targetEntity="Time", mappedBy="event")
+    * @ORM\OneToMany(targetEntity="Time", mappedBy="event", cascade={"all"})
     */
     protected $eventTimes;
 
@@ -89,12 +89,12 @@ class Event
     protected $viewCount;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     protected $timestamp;
 
     /**
-    * @ORM\OneToOne (targetEntity="Feedback")
+    * @ORM\OneToOne (targetEntity="Feedback", cascade={"all"})
     *
     */
     protected $feedback;
@@ -103,6 +103,10 @@ class Event
     public function __construct() {
         $this->eventCategories = new \Doctrine\Common\Collections\ArrayCollection();
         $this->eventTimes = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->timestamp = new \DateTime ("now");
+        $this->viewCount = 0;
+        $this->isPublished = 0;
+        $this->isHot = 0;
     }
     
 
@@ -407,6 +411,11 @@ class Event
         $this->eventTimes[] = $eventTimes;
     }
 
+
+    public function setEventTimes( $eventTimes )
+    {
+        $this->eventTimes = $eventTimes;
+    }
     /**
      * Get eventTimes
      *

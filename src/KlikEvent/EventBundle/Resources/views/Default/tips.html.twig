@@ -21,7 +21,7 @@
 
 <div class="row add-min-height add-bottom text-center">
     <div class="row">
-        <div class="tab-content span6 offset3">
+        <div class="tab-content span8 offset2">
             <div class="section ">
                 
                 {% if app.session.hasFlash('notice-ok') %}
@@ -79,10 +79,118 @@
 
             <div class="tab-pane {% if tips_event_owner is defined %} active {% endif %}" id="pemilik-event">
                 <h1> Tips - Pemilik Event </h1>
-                <form action="{{ path('KlikEventEventBundle_Feedback_page') }}" method="post" class="form-horizontal" {{ form_enctype(form_event_owner) }}>
-                    {{form_widget(form_event_owner)}}
+                <form action="{{ path('KlikEventEventBundle_TipsEventOwner_page') }}" method="post" class="form-horizontal" {{ form_enctype(form_event_owner) }}>
 
-                    <a href="#" class="addTime">addTime</a>
+                     <legend>Anda Pemilik Event? Berikan kami tips!</legend>
+    
+              
+                    <div class="control-group">
+                        {{form_label(form_event_owner.feedback.fromName, 'Nama' , { 'attr' : {'class':'control-label error' } } ) }}
+                        <div class="controls">
+                            {{form_widget(form_event_owner.feedback.fromName , { 'attr' : {'class':'input-xlarge' } })}}
+                            {{form_errors(form_event_owner.feedback.fromName)}}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        {{form_label(form_event_owner.feedback.fromEmail, 'Email' , { 'attr' : {'class':'control-label error' } } ) }}
+                        <div class="controls">
+                            {{form_widget(form_event_owner.feedback.fromEmail , { 'attr' : {'class':'input-xlarge' } })}}
+                            {{form_errors(form_event_owner.feedback.fromEmail)}}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        {{form_label(form_event_owner.feedback.content, 'Isi Tips / Judul' , { 'attr' : {'class':'control-label error' } } ) }}
+                        <div class="controls">
+                            {{form_widget(form_event_owner.feedback.content , { 'attr' : {'class':'input-xlarge', 'rows' : 3 } })}}
+                            {{form_errors(form_event_owner.feedback.content)}}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        {{form_label(form_event_owner.eventTitle, 'Nama Event' , { 'attr' : {'class':'control-label error' } } ) }}
+                        <div class="controls">
+                            {{form_widget(form_event_owner.eventTitle , { 'attr' : {'class':'input-xlarge' } })}}
+                            {{form_errors(form_event_owner.eventTitle)}}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        {{form_label(form_event_owner.eventLocation1, 'Lokasi Event' , { 'attr' : {'class':'control-label error' } } ) }}
+                        <div class="controls">
+                            {{form_widget(form_event_owner.eventLocation1 , { 'attr' : {'class':'input-xlarge' } })}}
+                            {{form_errors(form_event_owner.eventLocation1)}}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        {{form_label(form_event_owner.eventLocation2, '' , { 'attr' : {'class':'control-label error' } } ) }}
+                        <div class="controls">
+                            {{form_widget(form_event_owner.eventLocation2 , { 'attr' : {'class':'input-xlarge' } })}}
+                            {{form_errors(form_event_owner.eventLocation2)}}
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        {{form_label(form_event_owner.eventShortDescription, 'Deskripsi Pendek Event' , { 'attr' : {'class':'control-label error' } } ) }}
+                        <div class="controls">
+                            {{form_widget(form_event_owner.eventShortDescription , { 'attr' : {'class':'input-xlarge', 'rows' : 5 } })}}
+                            {{form_errors(form_event_owner.eventShortDescription)}}
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        {{form_label(form_event_owner.eventDescription, 'Deskripsi Event' , { 'attr' : {'class':'control-label error' } } ) }}
+                        <div class="controls">
+                            {{form_widget(form_event_owner.eventDescription , { 'attr' : {'class':'input-xlarge', 'rows' : 5 } })}}
+                            {{form_errors(form_event_owner.eventDescription)}}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        {{form_label(form_event_owner.eventFurtherDescription, 'Deskripsi Further Information' , { 'attr' : {'class':'control-label error' } } ) }}
+                        <div class="controls">
+                            {{form_widget(form_event_owner.eventFurtherDescription , { 'attr' : {'class':'input-xlarge', 'rows' : 3 } })}}
+                            {{form_errors(form_event_owner.eventFurtherDescription)}}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        {{form_label(form_event_owner.eventCoverImage, 'Kover Foto Event' , { 'attr' : {'class':'control-label error' } } ) }}
+                        <div class="controls">
+                            {{form_widget(form_event_owner.eventCoverImage , { 'attr' : {'class':'input-xlarge'} })}}
+                            {{form_errors(form_event_owner.eventCoverImage)}}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        {{form_label(form_event_owner.eventImages, 'Foto Event (Untuk galeri)' , { 'attr' : {'class':'control-label error' } } ) }}
+                        <div class="controls">
+                            {{form_widget(form_event_owner.eventImages , { 'attr' : {'class':'input-xlarge' } })}}
+                            {{form_errors(form_event_owner.eventImages)}}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        {{form_label(form_event_owner.eventVideos, 'Video Event (Embbed Code)' , { 'attr' : {'class':'control-label error' } } ) }}
+                        <div class="controls">
+                            {{form_widget(form_event_owner.eventVideos , { 'attr' : {'class':'input-xlarge'} })}}
+                            {{form_errors(form_event_owner.eventVideos)}}
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        {{form_label(form_event_owner.eventCategories, 'Kategori Event (Ctrl + Klik untuk lebih dari 1)' , { 'attr' : {'class':'control-label error' } } ) }}
+                        <div class="controls">
+                            {{form_widget(form_event_owner.eventCategories , { 'attr' : {'class':'input-large'} })}}
+                            {{form_errors(form_event_owner.eventCategories)}}
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        {{form_label(form_event_owner.eventTimes, 'Tanggal dan Waktu Event ' , { 'attr' : {'class':'control-label error' } } ) }}
+                        <div class="controls">
+                            {{form_widget(form_event_owner.eventTimes , { 'attr' : {'class':'input-xlarge'} })}}
+                            {{form_errors(form_event_owner.eventTimes)}}
+                        </div>
+                    </div>
+
+                    {{form_rest (form_event_owner)}}
+                 
+                    <a href="#" class="addTime">addTime</a><br/><br/>
+                    <button class="btn-large btn-primary" >Submit</button>
                 </form>
             </div>
 

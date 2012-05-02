@@ -236,46 +236,7 @@ class Event
         return $this->eventFurtherDescription;
     }
 
-    /**
-     * Set eventDateTimeBegin
-     *
-     * @param datetime $eventDateTimeBegin
-     */
-    public function setEventDateTimeBegin($eventDateTimeBegin)
-    {
-        $this->eventDateTimeBegin = $eventDateTimeBegin;
-    }
-
-    /**
-     * Get eventDateTimeBegin
-     *
-     * @return datetime 
-     */
-    public function getEventDateTimeBegin()
-    {
-        return $this->eventDateTimeBegin;
-    }
-
-    /**
-     * Set eventDateTimeEnd
-     *
-     * @param datetime $eventDateTimeEnd
-     */
-    public function setEventDateTimeEnd($eventDateTimeEnd)
-    {
-        $this->eventDateTimeEnd = $eventDateTimeEnd;
-    }
-
-    /**
-     * Get eventDateTimeEnd
-     *
-     * @return datetime 
-     */
-    public function getEventDateTimeEnd()
-    {
-        return $this->eventDateTimeEnd;
-    }
-
+   
     /**
      * Set eventCoverImage
      *
@@ -454,5 +415,25 @@ class Event
     public function getEventTimes()
     {
         return $this->eventTimes;
+    }
+
+    /**
+     * Set feedback
+     *
+     * @param KlikEvent\EventBundle\Entity\Feedback $feedback
+     */
+    public function setFeedback(\KlikEvent\EventBundle\Entity\Feedback $feedback)
+    {
+        $this->feedback = $feedback;
+    }
+
+    /**
+     * Get feedback
+     *
+     * @return KlikEvent\EventBundle\Entity\Feedback 
+     */
+    public function getFeedback()
+    {
+        return $this->feedback;
     }
 }

@@ -20,6 +20,10 @@ KlikEventEventBundle_Feedback_page:
     pattern:  /feedback
     defaults: { _controller: KlikEventEventBundle:Default:defaultFeedback, name: Tips }
 
+KlikEventEventBundle_TipsEventOwner_page:
+    pattern:  /tips_event_owner
+    defaults: { _controller: KlikEventEventBundle:Default:defaultTipsEventOwner, name: Tips }
+
 
 KlikEventEventBundle_Subscribe_page:
     pattern:  /subscribe
@@ -28,7 +32,7 @@ KlikEventEventBundle_Subscribe_page:
 
 KlikEventEventBundle_EventsByCategory_page:
     pattern:  /event/category/{category}
-    defaults: { _controller: KlikEventEventBundle:Default:template, name: EventsByCategory }
+    defaults: { _controller: KlikEventEventBundle:Default:showEventByCategory, name: EventsByCategory }
     requirements:
         month: "[a-zA-Z]+"
 
@@ -39,19 +43,6 @@ KlikEventEventBundle_eventsByDate_page:
         date:  "[0-9]{1,2}"
         month: "[0-9]{1,2}"
         year:  "[0-9]{4}"
-
-# KlikEventEventBundle_eventsByMonth_page:
-#     pattern:  /event/{month}/{year}
-#     defaults: { _controller: KlikEventEventBundle:Default:template, name: EventsByMonth }
-#     requirements:
-#         month: "[0-9]{1,2}"
-#         year:  "[0-9]{4}"
-
-# KlikEventEventBundle_eventsByYear_page:
-#     pattern:  /event/{year}
-#     defaults: { _controller: KlikEventEventBundle:Default:template, name: EventsByYear }
-#     requirements:
-#         year:  "[0-9]{4}" 
 
 KlikEventEventBundle_eventDetails_page:
     pattern:  /event/id/{id}

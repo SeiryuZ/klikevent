@@ -12,3 +12,18 @@ KlikEvent\EventBundle\Entity\Feedback:
         fromEmail:
             - Email: ~
 
+KlikEvent\EventBundle\Entity\Event:
+    properties:
+        eventTitle:
+            - NotBlank: ~
+        eventLocation1:
+            - NotBlank: ~
+        eventShortDescription:
+            - NotBlank: ~
+        eventDescription:
+            - NotBlank: ~
+        eventCategories:
+            - NotBlank: ~
+        eventCoverImage:
+            - File: ~
+

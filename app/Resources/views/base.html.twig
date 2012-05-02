@@ -74,19 +74,19 @@
     <div class="row text-left">
         <div class="span3">
             <p><strong>Categories</strong><p>
-            <a href="filter.php?filter=paid"><p>Paid</p></a>
-            <a href="filter.php?filter=free"><p>Free</p></a>
-            <a href="filter.php?filter=day"><p>Day</p></a>
-            <a href="filter.php?filter=night"><p>Night</p></a>
-            <a href="filter.php?filter=artandhobby"><p>Art &amp; Hobbies</p></a>
-            <a href="filter.php?filter=exhibition"><p>Exhibition</p></a>
-            <a href="filter.php?filter=education"><p>Education</p></a>
+            <a href="{{path ('KlikEventEventBundle_EventsByCategory_page', {'category' : 'paid'})}}"><p>Paid</p></a>
+            <a href="{{path ('KlikEventEventBundle_EventsByCategory_page', {'category' : 'free'})}}"><p>Free</p></a>
+            <a href="{{path ('KlikEventEventBundle_EventsByCategory_page', {'category' : 'day'})}}"><p>Day</p></a>
+            <a href="{{path ('KlikEventEventBundle_EventsByCategory_page', {'category' : 'Night'})}}"><p>Night</p></a>
+            <a href="{{path ('KlikEventEventBundle_EventsByCategory_page', {'category' : 'art & hobby'})}}"><p>Art &amp; Hobbies</p></a>
+            <a href="{{path ('KlikEventEventBundle_EventsByCategory_page', {'category' : 'exhibition'})}}"><p>Exhibition</p></a>
+            <a href="{{path ('KlikEventEventBundle_EventsByCategory_page', {'category' : 'education'})}}"><p>Education</p></a>
             <a href="filter.php?filter=others"><p>Others</p></a>
         </div>
         <div class="span3">
             <p><strong>About</strong><p>
             <a href="about.php"><p>About</p></a>
-            <a href="tips.php"><p>Contact Us</p></a>
+            <a href="{{path ('KlikEventEventBundle_Tips_page')}}"><p>Contact Us</p></a>
             <p>Terms and Condition</p>
         </div>
         <div class="span3">

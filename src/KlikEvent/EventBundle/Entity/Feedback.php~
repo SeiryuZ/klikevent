@@ -40,4 +40,94 @@ class Feedback
     // IMPORTANT! THIS IS STILL MANUAL, ADD DEFAULT VALUE, before insert
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set fromName
+     *
+     * @param string $fromName
+     */
+    public function setFromName($fromName)
+    {
+        $this->fromName = $fromName;
+    }
+
+    /**
+     * Get fromName
+     *
+     * @return string 
+     */
+    public function getFromName()
+    {
+        return $this->fromName;
+    }
+
+    /**
+     * Set fromEmail
+     *
+     * @param string $fromEmail
+     */
+    public function setFromEmail($fromEmail)
+    {
+        $this->fromEmail = $fromEmail;
+    }
+
+    /**
+     * Get fromEmail
+     *
+     * @return string 
+     */
+    public function getFromEmail()
+    {
+        return $this->fromEmail;
+    }
+
+    /**
+     * Set content
+     *
+     * @param text $content
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+    }
+
+    /**
+     * Get content
+     *
+     * @return text 
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * Set submittedAt
+     *
+     * @param datetime $submittedAt
+     */
+    public function setSubmittedAt($submittedAt)
+    {
+        $this->submittedAt = $submittedAt;
+    }
+
+    /**
+     * Get submittedAt
+     *
+     * @return datetime 
+     */
+    public function getSubmittedAt()
+    {
+        return $this->submittedAt;
+    }
 }

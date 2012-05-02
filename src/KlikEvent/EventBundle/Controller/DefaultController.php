@@ -34,16 +34,43 @@ class DefaultController extends Controller
 /***HOT START***/
     public function showHotAction( Request $request )
     {
+
+
+
         $repository = $this->getDoctrine()->getRepository('KlikEventEventBundle:Event');
         
         $events = $repository->findBy(
             array('isHot' => '1'),
+            array('' ),
             array('viewCount' => 'DESC')
         );
 
     return $this->render('KlikEventEventBundle:Default:hot_event.html.twig', array('events' => $events, 'pageTitle'=>'Hot Events'));
     }
 /***HOT START***/
+
+
+/***Categories START***/
+    public function showEventByCategoryAction( Request $request, $category )
+    {
+
+        $today = new \DateTime("now");
+        $repository = $this->getDoctrine()->getRepository('KlikEventEventBundle:Event');
+        $qb = $repository->createQueryBuilder('e');
+
+        $qb 
+            ->innerJoin('e.eventTimes' , 't', 'WITH', 'e.id =  t.event' )
+            ->innerJoin('e.eventCategories', 'c', 'WITH', 'c.categoryName = :category')
+            ->where('t.end  >  :today' )
+            //->andWhere ('e.eventCategories = :category')
+            ->orderBy('e.viewCount')
+            ->setParameter( 'today', $today )
+            ->setParameter( 'category', $category);
+        $events = $qb->getQuery()->getResult();
+
+    return $this->render('KlikEventEventBundle:Default:hot_event.html.twig', array('events' => $events, 'pageTitle'=>'Events'));
+    }
+/***Categories START***/
 
 
 /***Today START***/
@@ -136,6 +163,9 @@ class DefaultController extends Controller
         $feedback_event_anon = new Feedback();
         $feedback_event_owner = new Event();
 
+        $time = new Time();
+        $feedback_event_owner->addTime($time);
+
         $form_web = $this->createForm(new FeedbackType(), $feedback_web);
         $form_event_anon = $this->createForm(new FeedbackType(), $feedback_event_anon);
         $form_event_owner = $this->createForm(new EventType(), $feedback_event_owner);
@@ -146,6 +176,11 @@ class DefaultController extends Controller
             $form_web->bindRequest($request);
 
             if ($form_web->isValid()) {
+
+                foreach ( $feedback_event_owner->getEventTimes() as $times )
+                {
+                    $times->setEvent($feedback_event_owner);
+                }
 
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->persist($feedback_web);
@@ -196,6 +231,9 @@ class DefaultController extends Controller
         $feedback_web = new Feedback();
         $feedback_event_anon = new Feedback();
         $feedback_event_owner = new Event();
+        
+        $time = new Time();
+        $feedback_event_owner->addTime($time);
 
         $form_web = $this->createForm(new FeedbackType(), $feedback_web);
         $form_event_anon = $this->createForm(new FeedbackType(), $feedback_event_anon);
@@ -208,6 +246,11 @@ class DefaultController extends Controller
             $form_event_anon->bindRequest($request);
 
             if ($form_event_anon->isValid()) {
+                
+                foreach ( $feedback_event_owner->getEventTimes() as $times )
+                {
+                    $times->setEvent($feedback_event_owner);
+                }
 
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->persist($feedback_event_anon);
@@ -254,21 +297,80 @@ class DefaultController extends Controller
 
 
     }
+    public function defaultTipsEventOwnerAction( Request $request )
+    {
+        $feedback_web = new Feedback();
+        $feedback_event_anon = new Feedback();
+        $feedback_event_owner = new Event();
+        
 
-    // public function defaultTipsEventOwnerAction( Request $request )
-    // {
-    //     $feedback_event_owner = new Event();
+        $time = new Time();
+        $feedback_event_owner->addTime($time);
 
-    //     $form_event_owner = $this->createForm(new FeedbackType(), $feedback_event_owner);
+        $form_web = $this->createForm(new FeedbackType(), $feedback_web);
+        $form_event_anon = $this->createForm(new FeedbackType(), $feedback_event_anon);
+        $form_event_owner = $this->createForm(new EventType(), $feedback_event_owner);
 
-    //     return $this->render ('KlikEventEventBundle:Default:tips.html.twig', 
-    //     array(
-    //         'form_web' => $form_web->createView(),
-    //         'form_event_owner' => $form_event_owner->createView(),
-    //         'tips_anon' => true
-    //         )
-    //     );    
-    // }
+
+
+        if ($request->getMethod() == 'POST') {
+            
+
+            $form_event_owner->bindRequest($request);
+         
+            if ($form_event_owner->isValid()) {
+                
+                foreach ( $feedback_event_owner->getEventTimes() as $times )
+                {
+                    $times->setEvent($feedback_event_owner);
+                }
+    
+                $em = $this->getDoctrine()->getEntityManager();
+                $em->persist($feedback_event_owner);
+                $em->flush();
+
+                $this->get('session')->setFlash('tips-notice-ok', 'Terima kasih untuk tips');
+
+                $feedback_event_owner = new Event();
+                $form_event_owner = $this->createForm(new EventType(), $feedback_event_owner);
+        
+                return $this->render ('KlikEventEventBundle:Default:tips.html.twig', 
+                array(
+                    'form_web' => $form_web->createView(),
+                    'form_event_anon' => $form_event_anon->createView(),
+                    'form_event_owner' => $form_event_owner->createView(),
+                    'tips_event_owner' => true
+                    ) 
+
+                );
+            }
+            else
+            {
+                $this->get('session')->setFlash('tips-notice-error', 'Maaf, Ada error. Coba lagi');
+                return $this->render ('KlikEventEventBundle:Default:tips.html.twig', 
+                array(
+                    'form_web' => $form_web->createView(),
+                    'form_event_anon' => $form_event_anon->createView(),
+                    'form_event_owner' => $form_event_owner->createView(),
+                    'tips_event_owner' => true
+                    ) 
+
+            );
+            }
+
+        }
+        return $this->render ('KlikEventEventBundle:Default:tips.html.twig', 
+        array(
+            'form_web' => $form_web->createView(),
+            'form_event_anon' => $form_event_anon->createView(),
+            'form_event_owner' => $form_event_owner->createView(),
+            'tips_event_owner' => true
+            )
+        ); 
+
+
+    }
+
 
 /***tips END***/
 
@@ -282,6 +384,9 @@ class DefaultController extends Controller
             $d=date("Y-m-d");
         return date($format, mktime(0,0,0,date('m',strtotime($d)), date('d',strtotime($d))+$interval, date('Y',strtotime($d)) ));
     }
+
+
+
 
 
 }
