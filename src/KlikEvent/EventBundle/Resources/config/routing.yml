@@ -14,15 +14,15 @@ KlikEventEventBundle_TodayEvent_page:
 
 KlikEventEventBundle_Tips_page:
     pattern:  /tips
-    defaults: { _controller: KlikEventEventBundle:Default:defaultTips, name: Tips }
+    defaults: { _controller: KlikEventEventBundle:Default:defaultTips }
 
 KlikEventEventBundle_Feedback_page:
     pattern:  /feedback
-    defaults: { _controller: KlikEventEventBundle:Default:defaultFeedback, name: Tips }
+    defaults: { _controller: KlikEventEventBundle:Default:defaultFeedback}
 
 KlikEventEventBundle_TipsEventOwner_page:
     pattern:  /tips_event_owner
-    defaults: { _controller: KlikEventEventBundle:Default:defaultTipsEventOwner, name: Tips }
+    defaults: { _controller: KlikEventEventBundle:Default:defaultTipsEventOwner}
 
 
 KlikEventEventBundle_Subscribe_page:
@@ -32,7 +32,7 @@ KlikEventEventBundle_Subscribe_page:
 
 KlikEventEventBundle_EventsByCategory_page:
     pattern:  /event/category/{category}
-    defaults: { _controller: KlikEventEventBundle:Default:showEventByCategory, name: EventsByCategory }
+    defaults: { _controller: KlikEventEventBundle:Default:showEventByCategory}
     requirements:
         month: "[a-zA-Z]+"
 
@@ -46,6 +46,6 @@ KlikEventEventBundle_eventsByDate_page:
 
 KlikEventEventBundle_eventDetails_page:
     pattern:  /event/id/{id}
-    defaults: { _controller: KlikEventEventBundle:Default:template, name: EventsDetailsID }
+    defaults: { _controller: KlikEventEventBundle:Default:showEventDetails}
     requirements:
         id:  "[0-9]+" 

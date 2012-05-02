@@ -31,6 +31,25 @@ class DefaultController extends Controller
         return $this->render('KlikEventEventBundle:Default:template.html.twig', array('name' => $name));
     }
 
+/***event Details START***/
+    public function showEventDetailsAction( Request $request, $id )
+    {
+
+
+
+        $repository = $this->getDoctrine()->getRepository('KlikEventEventBundle:Event');
+        $event = $repository->find($id);
+            
+
+        if (!$event) {
+        throw $this->createNotFoundException('No event found for id '.$id);
+        }
+
+    return $this->render('KlikEventEventBundle:Default:event_details.html.twig', array('event' => $event, 'pageTitle'=>$event->getEventTitle()));
+    }
+/***event Details START***/
+
+
 /***HOT START***/
     public function showHotAction( Request $request )
     {
@@ -41,7 +60,6 @@ class DefaultController extends Controller
         
         $events = $repository->findBy(
             array('isHot' => '1'),
-            array('' ),
             array('viewCount' => 'DESC')
         );
 

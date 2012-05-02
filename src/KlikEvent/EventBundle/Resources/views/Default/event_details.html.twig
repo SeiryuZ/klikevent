@@ -1,0 +1,97 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+    KlikEvent :: {{pageTitle}}
+{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="span12">
+            <h1>{{event.eventTitle}}</h1>
+        </div>
+    </div>
+
+    <div class="row ">
+        <div class="span12 ">
+            <div class="tabbable ">
+                <ul class="nav nav-tabs">
+                    <li class="active other "><a href="#overview" data-toggle="tab">Overview</a></li>
+                    <li class="other "><a href="#images" data-toggle="tab">Gallery</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row add-min-height add-bottom text-left">
+        <div class="span4">
+            <div class="row add-bottom ">
+                <div class="span4">
+                <a data-toggle="modal" href="#windowTitleDialog">
+                <img src="{{event.eventCoverImage}}" class="image">
+                </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span4 text-center">
+                    <span class='st_facebook_hcount' st_url="http://www.klikevent.com/event-details.php?id={{event.id}}" st_title="{{event.eventTitle}}" displayText='Facebook'></span>
+                    <span class='st_twitter_hcount' st_url="http://www.klikevent.com/event-details.php?id={{event.id}}" st_title="{{event.eventTitle}} via @KlikEventID #KlikEvent" displayText='Tweet'></span>
+                    <span class='st_pinterest_hcount' st_url="http://www.klikevent.com/event-details.php?id={{event.id}}" st_title="{{event.eventTitle}}" displayText='Pinterest'></span>
+                </div>
+            </div>
+        </div>
+        <div class="span8 ">
+            <div class="tab-content">
+                <div class="tab-pane active" id="overview">
+                    <div class="row">
+                        <div class="span8">
+                            <strong><p>Tanggal: </p></strong>
+                            {% for time in event.eventTimes %}
+                            <p>
+                            {{time.begin | date('d-m-Y H:m')}} - {{time.end | date('d-m-Y H:m')}}
+                            </p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="row">
+                        <div class="span8">
+                            <strong><p>Location</p></strong>
+                            <p>{{event.eventLocation1}}</p>
+                            <p>{{event.eventLocation2}}</p>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="row">
+                        <div class="span8">
+                            <strong><p>Description</p></strong>
+                            <p>{{event.eventDescription}}</p>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="row">
+                        <div class="span8">
+                            <strong><p>Further Info</p></strong>
+                            <p>{{event.eventFurtherDescription}}</p>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+                <div class="tab-pane" id="images">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="windowTitleDialog" style="display: none; ">
+        <div class="modal-header">
+            <a href="#" class="close" data-dismiss="modal">x</a>
+                        
+        </div>
+        <div class="modal-body">
+            <img src="{{event.eventCoverImage}}">
+        </div>
+    </div>
+{% endblock %}

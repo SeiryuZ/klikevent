@@ -12,15 +12,21 @@
     {% for event in events %}
         <div class="row">
             <div class="span12">
-                <span class="page-header">
+      
+                <div class="row">
+                    
                     <a href="{{path ('KlikEventEventBundle_eventDetails_page', { 'id' : event.id })}}" class="no-style-link">
                         <h1 class=" add-bottom ">{{event.eventTitle}}</h1>
                     </a>
-
+                </div>
+                <div class="row">
+                    <div class="span4 offset8 text-right">
                      {% for category in event.eventCategories %}
                         {{category.categoryName}}
                      {% endfor %}
-                </span>
+                    </div>
+                </div>
+                
 
                 <div class="row">
                     <div class="span6">
@@ -56,9 +62,9 @@
                 </div>
             </div>
         </div>
-
+    <hr/>
     {% else %}
-        No Hot Events
+        Tidak ada event
     {% endfor %}
 
 {% endblock %}
