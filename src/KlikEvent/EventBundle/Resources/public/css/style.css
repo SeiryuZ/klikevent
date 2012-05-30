@@ -143,6 +143,7 @@ body{
 
 .image{
   max-width: 98%;
+  min-width: 80%;
 }
 .subscribe-input{ 
   width: 400px; 
@@ -165,4 +166,49 @@ body{
 .partners {
   .min-height: 100px !important;
   height: 100px;
+}
+
+.category-bar div{
+  width: 50px;
+  height: 50px;
+  position:relative;
+  margin-right: 5px;
+  float:right;
+}
+
+
+
+.category-bar div.Paid{
+  background-image : url("../img/paid.jpg");
+}
+
+.category-bar div.Day{
+  background-image : url("../img/day.jpg");
+}
+.category-bar div.Night{
+  background-image : url("../img/night.jpg");
+}
+.category-bar div.Art{
+  background-image : url("../img/artandhobby.jpg");
+}
+.category-bar div.Education{
+  background-image : url("../img/edu.jpg");
+}
+.category-bar div.Exhibition{
+  background-image : url("../img/exhibition.jpg");
+}
+
+.category-bar div.Others{
+  background-image : url("../img/other.jpg");
+}
+
+#klikevent_eventbundle_eventtype_eventImages , #klikevent_eventbundle_eventtype_eventTimes{
+  position: relative;
+  left: 160px;
+}
+
+
+
+#klikevent_eventbundle_eventtype_eventTimes select{
+  width: 60px;
 }

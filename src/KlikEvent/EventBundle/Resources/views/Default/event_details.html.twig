@@ -28,7 +28,7 @@
             <div class="row add-bottom ">
                 <div class="span4">
                 <a data-toggle="modal" href="#windowTitleDialog">
-                <img src="{{event.eventCoverImage}}" class="image">
+                <img src="/klikevent/web/{{event.eventCoverImage}}" class="image">
                 </a>
                 </div>
             </div>
@@ -48,7 +48,7 @@
                             <strong><p>Tanggal: </p></strong>
                             {% for time in event.eventTimes %}
                             <p>
-                            {{time.begin | date('d-m-Y H:m')}} - {{time.end | date('d-m-Y H:m')}}
+                            {{time.begin | date('l, d F Y')}}  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{time.begin | date('H:m')}}- {{time.end | date('H:m')}}
                             </p>
                             {% endfor %}
                         </div>
@@ -79,7 +79,11 @@
                     
                 </div>
                 <div class="tab-pane" id="images">
-                    
+                    {% for image in event.eventImagesPath %}
+
+                        <img src="/klikevent/web/{{image}}" alt="{{image}}"> <br/>
+
+                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -91,7 +95,7 @@
                         
         </div>
         <div class="modal-body">
-            <img src="{{event.eventCoverImage}}">
+            <img src="/klikevent/web/{{event.eventCoverImage}}">
         </div>
     </div>
 {% endblock %}

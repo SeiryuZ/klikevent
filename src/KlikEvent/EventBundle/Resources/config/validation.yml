@@ -25,5 +25,6 @@ KlikEvent\EventBundle\Entity\Event:
         eventCategories:
             - NotBlank: ~
         eventCoverImage:
-            - File: ~
+            - Image: ~
+
 

@@ -156,13 +156,17 @@
                             {{form_errors(form_event_owner.eventCoverImage)}}
                         </div>
                     </div>
-                    <div class="control-group">
+                    <div class="control-group appendImage">
                         {{form_label(form_event_owner.eventImages, 'Foto Event (Untuk galeri)' , { 'attr' : {'class':'control-label error' } } ) }}
                         <div class="controls">
                             {{form_widget(form_event_owner.eventImages , { 'attr' : {'class':'input-xlarge' } })}}
                             {{form_errors(form_event_owner.eventImages)}}
+                            <a href="#" class="addImage">Add Image</a>
                         </div>
                     </div>
+
+                    
+
                     <div class="control-group">
                         {{form_label(form_event_owner.eventVideos, 'Video Event (Embbed Code)' , { 'attr' : {'class':'control-label error' } } ) }}
                         <div class="controls">
@@ -244,6 +248,18 @@
     {
         var collectionHolder = $('#klikevent_eventbundle_eventtype_eventTimes');
         var prototype = collectionHolder.attr('data-prototype');
+
+        
+        form = prototype.replace(/\$\$name\$\$/g, collectionHolder.children().length );
+        collectionHolder.append(form);
+
+    }
+
+    function addImage()
+    {
+        var collectionHolder = $('#klikevent_eventbundle_eventtype_eventImages');
+
+        var prototype = collectionHolder.attr('data-prototype');
         form = prototype.replace(/\$\$name\$\$/g, collectionHolder.children().length );
         collectionHolder.append(form);
 
@@ -254,5 +270,12 @@
         addTime();
 
     } );
+
+    $('a.addImage').live ('click', function (event ) { 
+        event.preventDefault();
+        addImage();
+
+    } );
+
 </script>
 {% endblock %}

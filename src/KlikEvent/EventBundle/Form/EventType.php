@@ -21,7 +21,22 @@ class EventType extends AbstractType
             ->add('eventDescription')
             ->add('eventFurtherDescription')
             ->add('eventCoverImage')
-            ->add('eventImages')
+            // ->add('eventImages', 'file',
+            //     array ("label" => "Images",
+            //            "required" => false,
+            //            "property_path" => false,
+            //            "attr" => array(
+            //                 "accept" => "image/*",
+            //                 "multiple" => "multiple"
+            //             )
+            //            )
+            //     )
+            ->add('eventImages', 'collection', 
+                array ('type' => new EventImageType(), 
+                    'allow_add' => true,
+                    'prototype' => true,
+                    'by_reference' => false
+                    ))
             ->add('eventVideos')
             ->add('eventCategories')
             ->add('eventTimes', 'collection', 

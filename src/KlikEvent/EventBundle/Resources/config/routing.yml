@@ -29,6 +29,10 @@ KlikEventEventBundle_Subscribe_page:
     pattern:  /subscribe
     defaults: { _controller: KlikEventEventBundle:Default:subscribe }
 
+KlikEventEventBundle_SubscribeFooter_page:
+    pattern:  /subscribe/footer
+    defaults: { _controller: KlikEventEventBundle:Default:subscribeFooter }
+
 
 KlikEventEventBundle_EventsByCategory_page:
     pattern:  /event/category/{category}

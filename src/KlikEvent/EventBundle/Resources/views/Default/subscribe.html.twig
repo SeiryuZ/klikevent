@@ -23,19 +23,19 @@
     <br/><br/>
     <button class="btn-large btn-primary text-center" onClick="">Subscribe</button>
 
-    {% if app.session.hasFlash('subscribe-notice-ok') %}
+    {% if app.session.hasFlash('notice-ok') %}
     <div class="blogger-notice add-top alert-success">
         <a class="close" data-dismiss="alert">x</a>
         <h3 class="alert-heading">Sukses!</h3>
-        {{ app.session.flash('subscribe-notice-ok') }}
+        {{ app.session.flash('notice-ok') }} <br/>
     </div>
     {% endif %}
 
-    {% if app.session.hasFlash('subscribe-notice-error') %}
+    {% if app.session.hasFlash('notice-error') %}
         <div class="blogger-notice add-top alert-error">
             <a class="close" data-dismiss="alert">x</a>
             <h3 class="alert-heading">Error!</h3>
-            {{ app.session.flash('subscribe-notice-error') }}<br/>
+            {{ app.session.flash('notice-error') }}<br/>
         </div>
     {% endif %}
 </form>

@@ -18,8 +18,15 @@ use KlikEvent\EventBundle\Form\FeedbackType;
 use KlikEvent\EventBundle\Form\EventType;
 use KlikEvent\EventBundle\Form\TimeType;
 
+use Symfony\Component\Validator\Constraints\Collection;
+use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Validator\Constraints\NotBlank;
+
 class DefaultController extends Controller
 {
+
+     
+    
     
     public function indexAction($name)
     {
@@ -39,7 +46,19 @@ class DefaultController extends Controller
 
         $repository = $this->getDoctrine()->getRepository('KlikEventEventBundle:Event');
         $event = $repository->find($id);
+        
+        $imagesPath = $event->getEventImages();
+
+        if ( ! empty ( $imagesPath) )
+        {
             
+            //split string by separator
+            $imagesPathArr = explode(":", $imagesPath );
+
+            //set the paths
+            $event->setEventImagesPath ( $imagesPathArr );
+        }
+
 
         if (!$event) {
         throw $this->createNotFoundException('No event found for id '.$id);
@@ -172,6 +191,59 @@ class DefaultController extends Controller
         return $this->render ('KlikEventEventBundle:Default:subscribe.html.twig', array('form' => $form->createView()) );
     }
 
+    public function subscribeFooterAction( Request $request )
+    {
+        $subscriber = new Subscriber();
+
+        $form = $this->createForm(new SubscribeType(), $subscriber);
+        
+
+         if ($request->getMethod() == 'POST') {
+            
+            //get all request
+            $data = $this->get('request')->request->all();
+
+            //get the email
+            $email = $data["email"];
+
+            //
+            $collectionConstraints = new Collection(
+                    array(
+                       
+                        'email' => array ( new Email (), new NotBlank() )
+                        )
+                    );
+
+            $errorList = $this->get('validator')->validateValue($data,$collectionConstraints);
+                       
+                    
+            //no error
+            if (count ( $errorList ) == 0) {
+
+                $subscriber->setEmail ($email);
+                $em = $this->getDoctrine()->getEntityManager();
+                $em->persist($subscriber);
+                $em->flush();
+
+                $this->get('session')->setFlash('notice-ok', 'Email anda sudah dimasukan ke database kami. Terima Kasih');
+
+                $subscriber = new Subscriber();
+
+                $form = $this->createForm(new SubscribeType(), $subscriber);
+
+                return $this->render ('KlikEventEventBundle:Default:subscribe.html.twig', array('form' => $form->createView()) );
+            }
+            else
+            {
+                $this->get('session')->setFlash('notice-error', 'Email anda tidak valid. Coba sekali lagi');
+
+
+                return $this->render ('KlikEventEventBundle:Default:subscribe.html.twig', array('form' => $form->createView()) );
+            }
+        }
+        return $this->render ('KlikEventEventBundle:Default:subscribe.html.twig', array('form' => $form->createView()) );
+    }
+
 /***SUBSCRIBE END***/
 
 /***tips START***/
@@ -274,7 +346,7 @@ class DefaultController extends Controller
                 $em->persist($feedback_event_anon);
                 $em->flush();
 
-                $this->get('session')->setFlash('tips-notice-ok', 'Terima kasih untuk tips');
+                $this->get('session')->setFlash('notice-ok', 'Terima kasih untuk tips');
 
                 $feedback_event_anon = new Feedback();
                 $form_event_anon = $this->createForm(new FeedbackType(), $feedback_web);
@@ -291,7 +363,7 @@ class DefaultController extends Controller
             }
             else
             {
-                $this->get('session')->setFlash('tips-notice-error', 'Maaf, Ada error. Coba lagi');
+                $this->get('session')->setFlash('notice-error', 'Maaf, Ada error. Coba lagi');
                 return $this->render ('KlikEventEventBundle:Default:tips.html.twig', 
                 array(
                     'form_web' => $form_web->createView(),
@@ -330,14 +402,63 @@ class DefaultController extends Controller
         $form_event_owner = $this->createForm(new EventType(), $feedback_event_owner);
 
 
+        $imageConstraint = new \Symfony\Component\Validator\Constraints\Image();
+
+
 
         if ($request->getMethod() == 'POST') {
             
 
             $form_event_owner->bindRequest($request);
-         
-            if ($form_event_owner->isValid()) {
+
+            $data = $form_event_owner->getData();
+
+
+            //get the image
+            $eventImages = $form_event_owner->get('eventImages')->getData();
+
+
+            $errorList = array();
+
+            //validate each image
+            foreach ( $eventImages as $image  )
+            {
+                $errorList = $this->get('validator')->validateValue($image["file"], $imageConstraint);
                 
+            }
+           
+      
+         
+            if ($form_event_owner->isValid() && count ( $errorList ) == 0 ) {
+                
+
+                //generate unique identification
+                $uid = md5($feedback_event_owner->getEventTitle().date('Y-m-d H:m:s'));
+
+                //move Cover Image
+                $feedback_event_owner->setEventCoverImage ( $this->moveFile  ( $feedback_event_owner->getEventCoverImage() , $uid ) );
+
+                // move Each Images uploaded
+                $otherImages = "";
+
+                $count = 0;
+
+                
+                foreach ( $eventImages as $image  )
+                {   
+                    //append : if not the first element
+                    if ( $count >  0)
+                        $otherImages .=":";
+
+                    //append the imagefile name
+                    $otherImages .= $this->moveFile( $image ["file"] , $uid);
+                    
+                    //add counter
+                    $count++;
+                }
+
+                $feedback_event_owner->setEventImages($otherImages);
+
                 foreach ( $feedback_event_owner->getEventTimes() as $times )
                 {
                     $times->setEvent($feedback_event_owner);
@@ -347,7 +468,7 @@ class DefaultController extends Controller
                 $em->persist($feedback_event_owner);
                 $em->flush();
 
-                $this->get('session')->setFlash('tips-notice-ok', 'Terima kasih untuk tips');
+                $this->get('session')->setFlash('notice-ok', 'Terima kasih untuk tips');
 
                 $feedback_event_owner = new Event();
                 $form_event_owner = $this->createForm(new EventType(), $feedback_event_owner);
@@ -364,7 +485,7 @@ class DefaultController extends Controller
             }
             else
             {
-                $this->get('session')->setFlash('tips-notice-error', 'Maaf, Ada error. Coba lagi');
+                $this->get('session')->setFlash('notice-error', 'Maaf, Ada error. Coba lagi');
                 return $this->render ('KlikEventEventBundle:Default:tips.html.twig', 
                 array(
                     'form_web' => $form_web->createView(),
@@ -405,6 +526,28 @@ class DefaultController extends Controller
 
 
 
+
+    private function moveFile ( $file, $uid )
+    {
+        $basePath = __DIR__.'/../../../../web/';
+        $uploadDir = "images/";
+
+        //create target path
+        $targetPath = $basePath.$uploadDir.$uid;
+
+
+        ///move file
+        $file->move($targetPath, $file->getClientOriginalName());
+
+
+        //get new File Path
+        $newFilePath = $uploadDir.$uid."/".$file->getClientOriginalName();
+
+        //clean file
+        $file = null;
+
+        return $newFilePath;
+    }
 
 
 }

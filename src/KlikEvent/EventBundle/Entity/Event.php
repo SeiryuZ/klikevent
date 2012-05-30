@@ -99,16 +99,30 @@ class Event
     */
     protected $feedback;
 
+    protected $eventImagesPath;
+
 
     public function __construct() {
         $this->eventCategories = new \Doctrine\Common\Collections\ArrayCollection();
         $this->eventTimes = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->eventImagesPath = array();
         $this->timestamp = new \DateTime ("now");
         $this->viewCount = 0;
         $this->isPublished = 0;
         $this->isHot = 0;
     }
     
+
+    public function setEventImagesPath( $eventImagesPath )
+    {   
+        $this->eventImagesPath = $eventImagesPath;
+    }
+
+    public function getEventImagesPath ()
+    {
+        return $this->eventImagesPath;
+    }
+
 
     /**
      * Get id
