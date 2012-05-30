@@ -43,10 +43,20 @@ class DefaultController extends Controller
     {
 
 
-
+        //get repo
         $repository = $this->getDoctrine()->getRepository('KlikEventEventBundle:Event');
         $event = $repository->find($id);
         
+
+        //add view count
+        $event->setViewCount($event->getViewCount() +1);
+
+        //get entity manager & persist change
+
+        $em = $this->getDoctrine()->getEntityManager();
+        $em->persist($event);
+        $em->flush();
+
         $imagesPath = $event->getEventImages();
 
         if ( ! empty ( $imagesPath) )
@@ -77,10 +87,44 @@ class DefaultController extends Controller
 
         $repository = $this->getDoctrine()->getRepository('KlikEventEventBundle:Event');
         
-        $events = $repository->findBy(
-            array('isHot' => '1'),
-            array('viewCount' => 'DESC')
-        );
+        $today = new \DateTime("now");
+
+        $query = $repository->createQueryBuilder('e')
+            ->innerJoin('e.eventTimes' , 't', 'WITH', 'e.id =  t.event')
+            ->where ('e.isHot =  1 ')
+            ->andWhere ('t.end  >  :today')
+            ->groupBy('e.id')
+            ->setParameter ('today', $today)
+            ->getQuery();
+
+        $events = $query->getResult();
+
+        $total = count ($events);
+
+        if ( $total < 5 )
+        {
+            $limit = 5 - $total;
+
+            $query = $repository->createQueryBuilder('e')
+            ->innerJoin('e.eventTimes' , 't', 'WITH', 'e.id =  t.event')
+            ->Where ('t.end  >  :today');
+            for ( $i = 0 ; $i < $total ; $i++ )
+            {
+                $id = $events[$i]->getId();
+                $query->andWhere('e.id != :id' )
+                ->setParameter('id', $id);
+            }
+            $query->groupBy('e.id')
+            ->orderBy('e.viewCount', 'DESC')
+            ->setFirstResult (0)
+            ->setMaxResults ($limit)
+            ->setParameter ('today', $today);
+            
+            $result = $query->getQuery()->getResult();
+
+            $events= array_merge ($events , $result );
+
+        }
 
     return $this->render('KlikEventEventBundle:Default:hot_event.html.twig', array('events' => $events, 'pageTitle'=>'Hot Events'));
     }

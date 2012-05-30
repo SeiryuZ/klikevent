@@ -13,31 +13,32 @@
         <div class="row">
             <div class="span12">
       
-                <div class="row">
-                    
-                    <a href="{{path ('KlikEventEventBundle_eventDetails_page', { 'id' : event.id })}}" class="no-style-link">
-                        <h1 class=" add-bottom ">{{event.eventTitle}}</h1>
-                    </a>
-                </div>
-                <div class="row">
-                    <div class="span4 offset8 text-right">
-                     {% for category in event.eventCategories %}
-                        {{category.categoryName}}
-                     {% endfor %}
-                    </div>
-                </div>
+                
                 
 
                 <div class="row">
                     <div class="span6">
-                        {{event.eventCoverImage}}
+                        <img src="/klikevent/web/{{event.eventCoverImage}}" class="image">
                     </div>
                     <div class="span6">
+                        <div class="row">
+                    
+                            <a href="{{path ('KlikEventEventBundle_eventDetails_page', { 'id' : event.id })}}" class="no-style-link">
+                                <h1 class=" add-bottom ">{{event.eventTitle}}</h1>
+                            </a>
+                        </div>
+                        <div class="row">
+                            <div class="span6  text-right category-bar">
+                            {% for category in event.eventCategories %}
+                                <div title="{{category.categoryName}}" class="{{category.categoryName}}">&nbsp;</div>
+                            {% endfor %}
+                            </div>
+                        </div>
                         <div class="row">
                         <h3 class="description">
                         {% for time in event.eventTimes %}
 
-                        {{time.begin | date('d-m-Y')}} - {{time.end | date('d-m-Y')}}
+                        {{time.begin | date('d M')}} &nbsp;&nbsp; 
 
                         {% endfor %}
                             <br/>
