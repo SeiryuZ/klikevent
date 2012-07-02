@@ -101,3 +101,12 @@
 [EntityAudit]
     git=git://github.com/simplethings/EntityAudit.git
     target=/bundles/SimpleThings/EntityAudit
+
+[FOSFacebookBundle]
+    git=git://github.com/FriendsOfSymfony/FOSFacebookBundle.git
+    target=/bundles/FOS/FacebookBundle
+    version=origin/2.0
+
+[FacebookSDK]
+    git=git://github.com/facebook/facebook-php-sdk.git
+    target=/facebook

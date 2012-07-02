@@ -1,4 +1,7 @@
 security:
+    factories:
+        - "%kernel.root_dir%/../vendor/bundles/FOS/FacebookBundle/Resources/config/security_factories.xml"
+
     encoders:
         Symfony\Component\Security\Core\User\User: plaintext
 
@@ -11,6 +14,7 @@ security:
             users:
                 user:  { password: userpass, roles: [ 'ROLE_USER' ] }
                 admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+
 
     firewalls:
         dev:
@@ -33,16 +37,23 @@ security:
             http_basic:
                 realm: "Secured Demo Area"
 
-        the_rest:
-            pattern: ^/
-            anonymous: ~
-            form_login:
-                login_path:  /login
-                check_path:  /login_check
-        
+        public:
+              # since anonymous is allowed users will not be forced to login
+              pattern:   ^/.*
+              fos_facebook:
+                  app_url: "http://apps.facebook.com/appName/"
+                  server_url: "http://localhost/facebookApp/"
+              anonymous: true
+              logout:
+                  handlers: ["fos_facebook.logout_handler"]
+
+
+
 
 
     access_control:
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
         #- { path: ^/_internal, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }
         - { path: ^/admin, roles:ROLE_ADMIN}
+        - { path: ^/secured/.*,  role: [ROLE_FACEBOOK]  } # This is the route secured with fos_facebook
+        - { path: ^/.*, role: [IS_AUTHENTICATED_ANONYMOUSLY] }
